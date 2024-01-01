@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://jxsbcmo2pr2o"]
+[gd_scene load_steps=3 format=3 uid="uid://jxsbcmo2pr2o"]
 
 [ext_resource type="SpriteFrames" uid="uid://dmxgi6kkpr2ah" path="res://resources/player/weapons/shotgun/weapon_shotgun_sprite_frames.tres" id="1_fs0yd"]
+[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_rqr11"]
 
 [node name="FlashlightAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_fs0yd")
 animation = &"shotgun_reload"
+
+[node name="FlashLight" type="PointLight2D" parent="."]
+show_behind_parent = true
+position = Vector2(-76, 41)
+rotation = 4.71239
+color = Color(0.6, 0.513726, 0.239216, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("2_rqr11")
+offset = Vector2(0, 1650)
+texture_scale = 10.0

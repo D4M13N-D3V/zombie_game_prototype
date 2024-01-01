@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://8n4phmr84f6g"]
+[gd_scene load_steps=3 format=3 uid="uid://8n4phmr84f6g"]
 
 [ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
+[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
 
 [node name="RifleAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_nhxjg")
-animation = &"rifle_shoot"
+animation = &"rifle_reload"
+
+[node name="FlashLight" type="PointLight2D" parent="."]
+show_behind_parent = true
+position = Vector2(-48, 39)
+rotation = 4.71239
+color = Color(0.6, 0.513726, 0.239216, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("2_u8pou")
+offset = Vector2(0, 1650)
+texture_scale = 10.0

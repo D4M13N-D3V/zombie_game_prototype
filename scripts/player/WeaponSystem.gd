@@ -3,7 +3,6 @@ extends Node2D
 var current_weapon_configuration:Resource
 var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 var current_weapon = 0
-
 var current_weapon_animator = null
 
 func _ready():
@@ -46,11 +45,15 @@ func previous_weapon():
 func shoot():
 	if(current_weapon_configuration.weapon_ranged_enabled==true):
 		current_weapon_animator.play(weapons[current_weapon]+"_shoot")
-		#MELEE DAMAGE LOGIC
+		%ZoomCamera.apply_shake(50.0, 2.0)
+		print(%Muzzle.get_collider().get_name())
+		if %Muzzle.is_colliding() and %Muzzle.get_collider().has_method("damage"):
+			%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
 
 func melee():
 	if(current_weapon_configuration.weapon_melee_enabled==true):
 		current_weapon_animator.play(weapons[current_weapon]+"_melee")
+		%ZoomCamera.apply_shake(10.0, 4.0)
 		#MELEE DAMAGE LOGIC
 
 func check_magazine():

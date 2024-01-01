@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmukq8ulicvip"]
+[gd_scene load_steps=3 format=3 uid="uid://bmukq8ulicvip"]
 
 [ext_resource type="SpriteFrames" uid="uid://cigof78synoy0" path="res://resources/player/weapons/handgun/weapon_handgun_sprite_frames.tres" id="1_31h1k"]
+[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u3oth"]
 
 [node name="HandgunAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_31h1k")
 animation = &"handgun_melee"
+
+[node name="FlashLight" type="PointLight2D" parent="."]
+show_behind_parent = true
+position = Vector2(-58, 31)
+rotation = 4.71239
+color = Color(0.6, 0.513726, 0.239216, 1)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("2_u3oth")
+offset = Vector2(0, 1650)
+texture_scale = 10.0

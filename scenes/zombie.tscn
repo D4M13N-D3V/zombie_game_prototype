@@ -1,7 +1,7 @@
 [gd_scene load_steps=48 format=3 uid="uid://337tdwbqbmkt"]
 
 [ext_resource type="Texture2D" uid="uid://cgf8xpqmtdmkf" path="res://asset_packs/Top_Down_Zombie_rileygombart/attack/skeleton-attack_0.png" id="1_3av03"]
-[ext_resource type="Script" path="res://OLD/scripts/zombie.gd" id="1_k8tsi"]
+[ext_resource type="Script" path="res://scripts/Zombie.gd" id="1_d68kh"]
 [ext_resource type="Texture2D" uid="uid://bcb78bhxa1fns" path="res://asset_packs/Top_Down_Zombie_rileygombart/attack/skeleton-attack_1.png" id="2_3adni"]
 [ext_resource type="Texture2D" uid="uid://bjbkjwy7hwfsy" path="res://asset_packs/Top_Down_Zombie_rileygombart/attack/skeleton-attack_2.png" id="3_o5kkm"]
 [ext_resource type="Texture2D" uid="uid://cx4tyry8ni8hi" path="res://asset_packs/Top_Down_Zombie_rileygombart/attack/skeleton-attack_3.png" id="4_2s6t1"]
@@ -200,7 +200,7 @@ polygon = PackedVector2Array(-86.3333, -20.5556, -94.5557, 8.22223, -94.5556, 28
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 3
-script = ExtResource("1_k8tsi")
+script = ExtResource("1_d68kh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xh3tm")

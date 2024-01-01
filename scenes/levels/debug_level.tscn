@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://b20ukg3nv2tt6"]
 
-[ext_resource type="Texture2D" uid="uid://c5dmbbimywcep" path="res://asset_packs/kenney_scribble-dungeons/Tilesheet/tilesheet.png" id="1_mw17s"]
-[ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://scenes/flickering_light.tscn" id="3_eyv72"]
-[ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://scenes/zombie.tscn" id="4_iavyo"]
-[ext_resource type="PackedScene" uid="uid://0ysd2u5hcwjf" path="res://scenes/player/Player.tscn" id="4_pm3wc"]
+[ext_resource type="Texture2D" uid="uid://c5dmbbimywcep" path="res://asset_packs/kenney_scribble-dungeons/Tilesheet/tilesheet.png" id="1_nd7tf"]
+[ext_resource type="PackedScene" uid="uid://0ysd2u5hcwjf" path="res://scenes/player/Player.tscn" id="2_6381t"]
+[ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://scenes/flickering_light.tscn" id="3_ka5rn"]
+[ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://scenes/zombie.tscn" id="4_bvna3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_swbf3"]
 polygon = PackedVector2Array(-32, 9.75, 32, 9.25, 32, 32, -32, 32)
@@ -63,7 +63,7 @@ polygon = PackedVector2Array(-32, -32, -8.75, -32, -9, 8, 32, 8.5, 32, 32, -32, 
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, 9.25, 32, 9, -8.5, -32, -9.75)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jcxdc"]
-texture = ExtResource("1_mw17s")
+texture = ExtResource("1_nd7tf")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -380,23 +380,23 @@ color = Color(0.14902, 0.14902, 0.14902, 0)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.152941, 0.141176, 0.0352941, 1)
 
-[node name="Player" parent="." instance=ExtResource("4_pm3wc")]
+[node name="Player" parent="." instance=ExtResource("2_6381t")]
 position = Vector2(-57, -230)
 
-[node name="FlickeringLight" parent="." instance=ExtResource("3_eyv72")]
+[node name="FlickeringLight" parent="." instance=ExtResource("3_ka5rn")]
 position = Vector2(-630, -282)
 
-[node name="Zombie" parent="." instance=ExtResource("4_iavyo")]
+[node name="Zombie" parent="." instance=ExtResource("4_bvna3")]
 visible = false
 position = Vector2(-722, -150)
 rotation = -0.54378
 
-[node name="Zombie2" parent="." instance=ExtResource("4_iavyo")]
+[node name="Zombie2" parent="." instance=ExtResource("4_bvna3")]
 visible = false
 position = Vector2(-721, -427)
 rotation = 0.751203
 
-[node name="Zombie3" parent="." instance=ExtResource("4_iavyo")]
+[node name="Zombie3" parent="." instance=ExtResource("4_bvna3")]
 visible = false
 position = Vector2(-517, -266)
 rotation = -3.1942

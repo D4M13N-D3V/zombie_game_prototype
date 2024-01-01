@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0ysd2u5hcwjf"]
+[gd_scene load_steps=7 format=3 uid="uid://0ysd2u5hcwjf"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_s2c6l"]
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_7850m"]
 [ext_resource type="SpriteFrames" uid="uid://blro1j2a07hbj" path="res://resources/player/player_sprite_frames.tres" id="1_x0c5y"]
 [ext_resource type="PackedScene" uid="uid://37j1d4jjisg" path="res://scenes/player/weapons/WeaponSystem.tscn" id="2_iayjf"]
-[ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/zoomCamera.tscn" id="4_lyln0"]
-[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="5_huin5"]
-[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="6_lq04r"]
-[ext_resource type="Script" path="res://scenes/player/BodyLight.gd" id="7_gs15f"]
+[ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/player/zoomCamera.tscn" id="4_f38ed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcw0"]
 radius = 61.131
@@ -16,8 +13,7 @@ radius = 1016.03
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
-script = ExtResource("1_s2c6l")
-player_movement_speed = 10000.0
+script = ExtResource("1_7850m")
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_x0c5y")
@@ -30,27 +26,9 @@ shape = SubResource("CircleShape2D_8vcw0")
 [node name="WeaponSystem" parent="." instance=ExtResource("2_iayjf")]
 unique_name_in_owner = true
 
-[node name="ZoomCamera" parent="." instance=ExtResource("4_lyln0")]
+[node name="ZoomCamera" parent="." instance=ExtResource("4_f38ed")]
+unique_name_in_owner = true
 zoom_speed = 5
-
-[node name="FlashLight" type="PointLight2D" parent="."]
-show_behind_parent = true
-rotation = 4.71239
-color = Color(0.6, 0.513726, 0.239216, 1)
-shadow_enabled = true
-shadow_filter = 2
-texture = ExtResource("5_huin5")
-offset = Vector2(0, 1650)
-texture_scale = 10.0
-
-[node name="BodyLight" type="PointLight2D" parent="."]
-show_behind_parent = true
-color = Color(0.619589, 0.503817, 0.246227, 1)
-shadow_enabled = true
-texture = ExtResource("6_lq04r")
-texture_scale = 4.61
-script = ExtResource("7_gs15f")
-shake_amplitude = 0.015
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -60,6 +38,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 position = Vector2(691, 104)
 shape = SubResource("CircleShape2D_xjjbl")
+
+[node name="Muzzle" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(2500, 0)
 
 [connection signal="player_started_moving" from="." to="WeaponSystem" method="_on_player_player_started_moving"]
 [connection signal="player_started_sprinting" from="." to="WeaponSystem" method="_on_player_player_started_sprinting"]

@@ -23,6 +23,6 @@ weapon_melee_aoe = false
 weapon_ranged_enabled = true
 weapon_ranged_capacity = 0
 weapon_ranged_maximum = 0
-weapon_ranged_damage = 0.0
+weapon_ranged_damage = 1.0
 weapon_ranged_accuracy = 0.0
 weapon_ranged_bullet_rate = 1
