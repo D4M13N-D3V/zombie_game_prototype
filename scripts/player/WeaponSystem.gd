@@ -49,7 +49,6 @@ func shoot():
 	if(current_weapon_configuration.weapon_ranged_enabled==true):
 		current_weapon_animator.play(weapons[current_weapon]+"_shoot")
 		%ZoomCamera.apply_shake(50.0, 2.0)
-		print(%Muzzle.get_collider().get_name())
 		if %Muzzle.is_colliding() and %Muzzle.get_collider().has_method("damage"):
 			%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
 
