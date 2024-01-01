@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://c4acy4sptuuri"]
+
+[ext_resource type="Script" path="res://scripts/player/resources/weapons/WeaponConfiguration.gd" id="1_3mnsl"]
+[ext_resource type="PackedScene" uid="uid://bn11o0qyapyf4" path="res://resources/player/weapons/flashlight/flashlightAnimations.tscn" id="2_ormms"]
+
+[resource]
+script = ExtResource("1_3mnsl")
+weapon_id = "weapon"
+weapon_name = "Flashlight"
+weapon_description = "A blunt and heavy flashlight with an unlimited battery."
+weapon_sway_speed = 1.0
+weapon_melee_animation = "_melee"
+weapon_shoot_animation = "_shoot"
+weapon_reload_animation = "_reload"
+weapon_walk_animation = "_walk"
+weapon_sprint_animation = "_sprint"
+weapon_animated_sprite = ExtResource("2_ormms")
+weapon_muzzle_offset = Vector2(0, 0)
+weapon_melee_enabled = true
+weapon_melee_range = 0.0
+weapon_melee_damage = 0.0
+weapon_melee_aoe = false
+weapon_ranged_enabled = false
+weapon_ranged_capacity = 0
+weapon_ranged_maximum = 0
+weapon_ranged_damage = 0.0
+weapon_ranged_accuracy = 0.0
+weapon_ranged_bullet_rate = 1

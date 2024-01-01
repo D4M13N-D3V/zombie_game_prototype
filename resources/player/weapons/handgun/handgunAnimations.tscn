@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmukq8ulicvip"]
+
+[ext_resource type="SpriteFrames" uid="uid://cigof78synoy0" path="res://resources/player/weapons/handgun/weapon_handgun_sprite_frames.tres" id="1_31h1k"]
+
+[node name="HandgunAnimation" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_31h1k")
+animation = &"handgun_sprint"

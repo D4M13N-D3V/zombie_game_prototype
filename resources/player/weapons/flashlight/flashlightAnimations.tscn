@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn11o0qyapyf4"]
+
+[ext_resource type="SpriteFrames" uid="uid://ddxy6l21vmogm" path="res://resources/player/weapons/flashlight/weapon_flashlight_sprite_frames.tres" id="1_0axgm"]
+
+[node name="FlashlightAnimation" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_0axgm")
+animation = &"flashlight_sprint"

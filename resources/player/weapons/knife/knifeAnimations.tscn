@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://gto8obdfnjr2"]
+
+[ext_resource type="SpriteFrames" uid="uid://m3tpfsqqomgj" path="res://resources/player/weapons/knife/weapon_knife_sprite_frames.tres" id="1_8emao"]
+
+[node name="KnifeAnimation" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_8emao")
+animation = &"knife_sprint"

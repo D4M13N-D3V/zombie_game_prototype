@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8n4phmr84f6g"]
+
+[ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
+
+[node name="RifleAnimation" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_nhxjg")
+animation = &"rifle_reload"

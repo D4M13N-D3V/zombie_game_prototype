@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jxsbcmo2pr2o"]
+
+[ext_resource type="SpriteFrames" uid="uid://dmxgi6kkpr2ah" path="res://resources/player/weapons/shotgun/weapon_shotgun_sprite_frames.tres" id="1_fs0yd"]
+
+[node name="FlashlightAnimation" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_fs0yd")
+animation = &"shotgun_shoot"
+frame_progress = 0.886381

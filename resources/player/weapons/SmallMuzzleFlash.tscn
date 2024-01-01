@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b1n3hdfnci138"]
+
+[node name="WeaponSystem" type="Node2D"]
