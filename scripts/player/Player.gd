@@ -11,12 +11,13 @@ signal player_turned_flashlight_on
 signal player_turned_flashlight_off
 
 func _ready():
+	heal(1)
 	set("character_movement_speed",8000.0)
 	set("character_sprint_use_modifier",false)
 	set("character_sprint_modifier",2.0)
 	set("character_sprint_maximum",100.0)
 	set("character_sprint_drain_rate",2.0)
-	set("character_sprint_regen_rate",1.0)
+	set("character_sprint_regen_rate",5.0)
 	set("character_sprinting",false)
 	set("character_current_sprint",100.0)
 
@@ -68,6 +69,13 @@ func _on_vision_body_shape_exited(_body_rid, body, _body_shape_index, _local_sha
 
 # Movement Logic
 func movement_logic(delta):
+	
+	if(Input.is_action_just_pressed("sprint")):
+		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*2)
+		
+	if(Input.is_action_just_released("sprint")):
+		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*0.5)
+	
 	if(Input.is_action_pressed("sprint") and get("character_current_sprint")>0):
 		set("character_sprinting",true)
 	else:
@@ -77,11 +85,13 @@ func movement_logic(delta):
 	if(get("character_sprinting")):
 		velocity = direction * get("character_movement_speed") * delta *1.5
 		if(velocity.length()>0.0):
-			set("character_current_sprint",get("character_sprint_drain_rate") * delta)
+			var sprint = clamp(get("character_current_sprint") -get("character_sprint_drain_rate") * delta, 0, get("character_sprint_maximum"))
+			set("character_current_sprint",sprint)
 			player_sprint_changed.emit(get("character_sprint_maximum"),get("character_current_sprint"))
 	else:
 		velocity = direction * get("character_movement_speed") * delta
-		set("character_current_sprint", get("character_sprint_regen_rate") * delta)
+		var sprint = clamp(get("character_current_sprint") + get("character_sprint_regen_rate") * delta, 0, get("character_sprint_maximum"))
+		set("character_current_sprint", sprint)
 		player_sprint_changed.emit(get("character_sprint_maximum"),get("character_current_sprint"))
 			
 	move_and_slide()
@@ -91,11 +101,14 @@ func movement_logic(delta):
 			player_started_sprinting.emit()
 		else:
 			player_stopped_moving.emit()
+			player_stopped_sprinting.emit()
 	else:
 		if(velocity.length()>0):
 			player_started_moving.emit()
 		else:
 			player_stopped_moving.emit()
+			player_stopped_sprinting.emit()
 	
 func look_at_mouse():
 	look_at(get_global_mouse_position())
+

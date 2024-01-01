@@ -1,7 +1,7 @@
 extends Camera2D
 
-@export var min_zoom = 0.5
-@export var max_zoom = 2.0
+@export var min_zoom = 2.5
+@export var max_zoom = 4.0
 @export var zoom_factor = 0.1
 @export var zoom_speed = 3
 var shake_strength = Vector2(0,0)
@@ -10,7 +10,7 @@ var shake_fade = 2.0
 @onready var tween = Tween.new()
 @onready var rng = RandomNumberGenerator.new()
 
-var _zoom_level = 1.0
+var _zoom_level = 3.0
 
 func _set_zoom_level(value: float) -> void:
 	# We limit the value between `min_zoom` and `max_zoom`

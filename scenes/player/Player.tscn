@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://0ysd2u5hcwjf"]
+[gd_scene load_steps=8 format=3 uid="uid://0ysd2u5hcwjf"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_7850m"]
 [ext_resource type="SpriteFrames" uid="uid://blro1j2a07hbj" path="res://resources/player/player_sprite_frames.tres" id="1_x0c5y"]
 [ext_resource type="PackedScene" uid="uid://37j1d4jjisg" path="res://scenes/player/weapons/WeaponSystem.tscn" id="2_iayjf"]
-[ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/player/zoomCamera.tscn" id="4_f38ed"]
+[ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/player/ZoomCamera.tscn" id="4_f38ed"]
+[ext_resource type="Script" path="res://scripts/player/HUD.gd" id="5_6s87k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcw0"]
 radius = 61.131
@@ -43,8 +44,123 @@ shape = SubResource("CircleShape2D_xjjbl")
 unique_name_in_owner = true
 target_position = Vector2(2500, 0)
 
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_6s87k")
+
+[node name="GridContainer" type="GridContainer" parent="HUD"]
+offset_right = 154.0
+offset_bottom = 212.0
+columns = 2
+
+[node name="player_maximum_health_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_maximum_health"
+
+[node name="player_maximum_health_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_current_health_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_current_health"
+
+[node name="player_current_health_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_maximum_armor_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_maximum_health"
+
+[node name="player_maximum_armor_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_current_armor_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_current_health"
+
+[node name="player_current_armor_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_maximum_sprint_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_maximum_sprint"
+
+[node name="player_maximum_sprint_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_current_sprint_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_current_sprint"
+
+[node name="player_current_sprint_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_sprint_drain_rate_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_sprint_drain_rate"
+
+[node name="player_sprint_drain_rate_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_sprint_regen_rate_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_sprint_regen_rate"
+
+[node name="player_sprint_regen_rate_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="player_moving_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_moving"
+
+[node name="player_moving_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "false"
+
+[node name="player_sprinting_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_sprinting"
+
+[node name="player_sprinting_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "false"
+
+[connection signal="damaged" from="." to="HUD" method="_on_player_damaged"]
+[connection signal="healed" from="." to="HUD" method="_on_player_healed"]
+[connection signal="player_sprint_changed" from="." to="HUD" method="_on_player_player_sprint_changed"]
 [connection signal="player_started_moving" from="." to="WeaponSystem" method="_on_player_player_started_moving"]
+[connection signal="player_started_moving" from="." to="HUD" method="_on_player_player_started_moving"]
 [connection signal="player_started_sprinting" from="." to="WeaponSystem" method="_on_player_player_started_sprinting"]
+[connection signal="player_started_sprinting" from="." to="HUD" method="_on_player_player_started_sprinting"]
 [connection signal="player_stopped_moving" from="." to="WeaponSystem" method="_on_player_player_stopped_moving"]
+[connection signal="player_stopped_moving" from="." to="HUD" method="_on_player_player_stopped_moving"]
 [connection signal="player_stopped_sprinting" from="." to="WeaponSystem" method="_on_player_player_stopped_sprinting"]
+[connection signal="player_stopped_sprinting" from="." to="HUD" method="_on_player_player_stopped_sprinting"]
 [connection signal="body_shape_exited" from="Vision" to="." method="_on_vision_body_shape_exited"]
