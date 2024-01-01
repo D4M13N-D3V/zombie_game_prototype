@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_53bxp")
 }],
-"loop": true,
+"loop": false,
 "name": &"flashlight_melee",
 "speed": 25.0
 }, {

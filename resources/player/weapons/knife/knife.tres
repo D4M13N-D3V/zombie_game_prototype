@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://i2up7st8k22l"]
+
+[ext_resource type="Script" path="res://scripts/player/resources/weapons/WeaponConfiguration.gd" id="1_frav4"]
+[ext_resource type="PackedScene" uid="uid://gto8obdfnjr2" path="res://resources/player/weapons/knife/knifeAnimations.tscn" id="2_v4i8o"]
+
+[resource]
+script = ExtResource("1_frav4")
+weapon_id = "knife"
+weapon_name = "Knife"
+weapon_description = "A military style combat knife made of steel that is 6 inches long."
+weapon_sway_speed = 1.0
+weapon_melee_animation = "_melee"
+weapon_shoot_animation = "_shoot"
+weapon_reload_animation = "_reload"
+weapon_walk_animation = "_walk"
+weapon_sprint_animation = "_sprint"
+weapon_animated_sprite = ExtResource("2_v4i8o")
+weapon_muzzle_offset = Vector2(0, 0)
+weapon_melee_enabled = true
+weapon_melee_range = 0.0
+weapon_melee_damage = 0.0
+weapon_melee_aoe = false
+weapon_ranged_enabled = false
+weapon_ranged_capacity = 0
+weapon_ranged_maximum = 0
+weapon_ranged_damage = 0.0
+weapon_ranged_accuracy = 0.0
+weapon_ranged_bullet_rate = 1

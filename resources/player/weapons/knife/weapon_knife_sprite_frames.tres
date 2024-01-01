@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_kt8gb")
 }],
-"loop": true,
+"loop": false,
 "name": &"knife_melee",
 "speed": 25.0
 }, {

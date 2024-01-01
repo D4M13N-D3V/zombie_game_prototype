@@ -1,7 +1,7 @@
 extends Node2D
 
 var current_weapon_configuration:Resource
-var weapons = ["flashlight"]
+var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 var current_weapon = 0
 
 var current_weapon_animator = null
@@ -12,7 +12,7 @@ func _ready():
 
 
 func initialize_weapon(weapon_id):
-	var current_weapon_configuration = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+".tres")
+	current_weapon_configuration = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+".tres")
 	if current_weapon_animator != null:
 		current_weapon_animator.queue_free()
 	# Load and instantiate weapon animator scene
@@ -28,16 +28,30 @@ func initialize_weapon(weapon_id):
 
 
 func next_weapon():
-	pass
+	if(current_weapon+1==weapons.size()):
+		current_weapon=0
+	else:
+		current_weapon = current_weapon+1
+	initialize_weapon(weapons[current_weapon])
 
 func previous_weapon():
-	pass
+	current_weapon = current_weapon-1
+	if(current_weapon-1<0):
+		current_weapon=weapons.size()-1
+	else:
+		current_weapon = current_weapon-1
+	initialize_weapon(weapons[current_weapon])
+	
 
 func shoot():
-	pass
+	if(current_weapon_configuration.weapon_ranged_enabled==true):
+		current_weapon_animator.play(weapons[current_weapon]+"_shoot")
+		#MELEE DAMAGE LOGIC
 
 func melee():
-	pass
+	if(current_weapon_configuration.weapon_melee_enabled==true):
+		current_weapon_animator.play(weapons[current_weapon]+"_melee")
+		#MELEE DAMAGE LOGIC
 
 func check_magazine():
 	pass
@@ -45,18 +59,33 @@ func check_magazine():
 func reload():
 	pass
 
-
+func is_playing_melee_anim():
+	var animation = current_weapon_animator.get_animation()
+	if(animation==weapons[current_weapon]+"_melee"):
+		return true
+	return false
+	
+func is_playing_shoot_anim():
+	var animation = current_weapon_animator.get_animation()
+	if(animation==weapons[current_weapon]+"_shoot"):
+		return true
+	return false
+	
 func _on_player_player_started_sprinting():
-	current_weapon_animator.play(weapons[current_weapon]+"_sprint")
+	if(is_playing_melee_anim()==false and is_playing_shoot_anim()==false or current_weapon_animator.is_playing()==false):
+		current_weapon_animator.play(weapons[current_weapon]+"_sprint")
 
 
 func _on_player_player_stopped_sprinting():
-	current_weapon_animator.play(weapons[current_weapon]+"_idle")
+	if(is_playing_melee_anim()==false and is_playing_shoot_anim()==false or current_weapon_animator.is_playing()==false):
+		current_weapon_animator.play(weapons[current_weapon]+"_idle")
 
 
 func _on_player_player_stopped_moving():
-	current_weapon_animator.play(weapons[current_weapon]+"_idle")
+	if(is_playing_melee_anim()==false and is_playing_shoot_anim()==false or current_weapon_animator.is_playing()==false):
+		current_weapon_animator.play(weapons[current_weapon]+"_idle")
 
 
 func _on_player_player_started_moving():
-	current_weapon_animator.play(weapons[current_weapon]+"_move")
+	if(is_playing_melee_anim()==false and is_playing_shoot_anim()==false or current_weapon_animator.is_playing()==false):
+		current_weapon_animator.play(weapons[current_weapon]+"_move")

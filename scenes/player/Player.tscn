@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0ysd2u5hcwjf"]
+[gd_scene load_steps=10 format=3 uid="uid://0ysd2u5hcwjf"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_s2c6l"]
 [ext_resource type="SpriteFrames" uid="uid://blro1j2a07hbj" path="res://resources/player/player_sprite_frames.tres" id="1_x0c5y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/zoomCamera.tscn" id="4_lyln0"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="5_huin5"]
 [ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="6_lq04r"]
+[ext_resource type="Script" path="res://scenes/player/BodyLight.gd" id="7_gs15f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcw0"]
 radius = 61.131
@@ -27,6 +28,7 @@ frame_progress = 0.378499
 shape = SubResource("CircleShape2D_8vcw0")
 
 [node name="WeaponSystem" parent="." instance=ExtResource("2_iayjf")]
+unique_name_in_owner = true
 
 [node name="ZoomCamera" parent="." instance=ExtResource("4_lyln0")]
 zoom_speed = 5
@@ -46,7 +48,9 @@ show_behind_parent = true
 color = Color(0.619589, 0.503817, 0.246227, 1)
 shadow_enabled = true
 texture = ExtResource("6_lq04r")
-texture_scale = 0.76
+texture_scale = 4.61
+script = ExtResource("7_gs15f")
+shake_amplitude = 0.015
 
 [node name="Vision" type="Area2D" parent="."]
 unique_name_in_owner = true

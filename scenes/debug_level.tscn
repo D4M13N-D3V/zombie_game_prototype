@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://5s1viironnl6"]
+[gd_scene load_steps=26 format=3 uid="uid://b20ukg3nv2tt6"]
 
 [ext_resource type="Texture2D" uid="uid://c5dmbbimywcep" path="res://asset_packs/kenney_scribble-dungeons/Tilesheet/tilesheet.png" id="1_mw17s"]
-[ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://OLD/scenes/flickering_light.tscn" id="2_b0mir"]
-[ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://OLD/scenes/zombie.tscn" id="3_524pv"]
+[ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://scenes/flickering_light.tscn" id="3_eyv72"]
+[ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://scenes/zombie.tscn" id="4_iavyo"]
 [ext_resource type="PackedScene" uid="uid://0ysd2u5hcwjf" path="res://scenes/player/Player.tscn" id="4_pm3wc"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_swbf3"]
@@ -14,8 +14,8 @@ polygon = PackedVector2Array(-32, -32, -8.5, -32, -7, 32, -32, 32)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x4yy6"]
 polygon = PackedVector2Array(8.5, -32, 32, -32, 32, 32, 7.75, 32)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yg8er"]
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, -9.25, -32, -8.5)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lsas2"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, -9.25, -32, -9.5)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xgiae"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, -9.5, -8.5, -7.75, -8, 32, -32, 32)
@@ -311,7 +311,7 @@ texture_region_size = Vector2i(64, 64)
 8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:3/0/physics_layer_0/angular_velocity = 0.0
 10:3/0 = 0
-10:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_yg8er")
+10:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_lsas2")
 10:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:3/0/physics_layer_0/angular_velocity = 0.0
 13:3/0 = 0
@@ -380,45 +380,23 @@ color = Color(0.14902, 0.14902, 0.14902, 0)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.152941, 0.141176, 0.0352941, 1)
 
-[node name="FlickeringLight" parent="." instance=ExtResource("2_b0mir")]
-position = Vector2(-598, -382)
-flicker_range = 0.8
-
-[node name="FlickeringLight2" parent="." instance=ExtResource("2_b0mir")]
-position = Vector2(576, -286)
-color = Color(0.7385, 0.63887, 0.325157, 1)
-texture_scale = 4.0
-flicker_range = 0.5
-
-[node name="Zombie_1" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(-719, -471)
-rotation = 1.25113
-
-[node name="Zombie_3" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(-548, -391)
-rotation = 2.09705
-
-[node name="Zombie_6" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(-448, -72)
-rotation = 0.862436
-
-[node name="Zombie_4" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(-740, -94.9999)
-rotation = -0.896497
-
-[node name="Zombie_5" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(4, -489)
-rotation = 2.09705
-
-[node name="Zombie_2" parent="." instance=ExtResource("3_524pv")]
-visible = false
-position = Vector2(654, -315)
-rotation = 1.04852
-
 [node name="Player" parent="." instance=ExtResource("4_pm3wc")]
 position = Vector2(-57, -230)
+
+[node name="FlickeringLight" parent="." instance=ExtResource("3_eyv72")]
+position = Vector2(-630, -282)
+
+[node name="Zombie" parent="." instance=ExtResource("4_iavyo")]
+visible = false
+position = Vector2(-722, -150)
+rotation = -0.54378
+
+[node name="Zombie2" parent="." instance=ExtResource("4_iavyo")]
+visible = false
+position = Vector2(-721, -427)
+rotation = 0.751203
+
+[node name="Zombie3" parent="." instance=ExtResource("4_iavyo")]
+visible = false
+position = Vector2(-517, -266)
+rotation = -3.1942

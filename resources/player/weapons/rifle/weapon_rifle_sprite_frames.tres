@@ -192,7 +192,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_tx32h")
 }],
-"loop": true,
+"loop": false,
 "name": &"rifle_melee",
 "speed": 25.0
 }, {
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("75_o8fg4")
 }],
-"loop": true,
+"loop": false,
 "name": &"rifle_reload",
 "speed": 25.0
 }, {
@@ -336,7 +336,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("78_1rax2")
 }],
-"loop": true,
+"loop": false,
 "name": &"rifle_shoot",
 "speed": 25.0
 }, {

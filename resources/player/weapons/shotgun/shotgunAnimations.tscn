@@ -4,5 +4,4 @@
 
 [node name="FlashlightAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_fs0yd")
-animation = &"shotgun_shoot"
-frame_progress = 0.886381
+animation = &"shotgun_reload"

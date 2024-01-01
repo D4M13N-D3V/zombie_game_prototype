@@ -4,4 +4,4 @@
 
 [node name="KnifeAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_8emao")
-animation = &"knife_sprint"
+animation = &"knife_idle"

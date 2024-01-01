@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://b6f1x4l8ym30l"]
+
+[ext_resource type="Script" path="res://scripts/player/resources/weapons/WeaponConfiguration.gd" id="1_kiwe8"]
+[ext_resource type="PackedScene" uid="uid://jxsbcmo2pr2o" path="res://resources/player/weapons/shotgun/shotgunAnimations.tscn" id="2_agldc"]
+
+[resource]
+script = ExtResource("1_kiwe8")
+weapon_id = "shotgun"
+weapon_name = "Shotgun"
+weapon_description = "A pump action shotgun."
+weapon_sway_speed = 1.0
+weapon_melee_animation = "_melee"
+weapon_shoot_animation = "_shoot"
+weapon_reload_animation = "_reload"
+weapon_walk_animation = "_walk"
+weapon_sprint_animation = "_sprint"
+weapon_animated_sprite = ExtResource("2_agldc")
+weapon_muzzle_offset = Vector2(0, 0)
+weapon_melee_enabled = true
+weapon_melee_range = 0.0
+weapon_melee_damage = 0.0
+weapon_melee_aoe = false
+weapon_ranged_enabled = true
+weapon_ranged_capacity = 0
+weapon_ranged_maximum = 0
+weapon_ranged_damage = 0.0
+weapon_ranged_accuracy = 0.0
+weapon_ranged_bullet_rate = 1

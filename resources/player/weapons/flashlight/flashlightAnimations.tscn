@@ -4,4 +4,4 @@
 
 [node name="FlashlightAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_0axgm")
-animation = &"flashlight_sprint"
+animation = &"flashlight_melee"

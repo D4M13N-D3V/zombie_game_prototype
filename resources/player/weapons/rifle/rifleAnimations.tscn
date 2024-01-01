@@ -4,4 +4,4 @@
 
 [node name="RifleAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_nhxjg")
-animation = &"rifle_reload"
+animation = &"rifle_shoot"

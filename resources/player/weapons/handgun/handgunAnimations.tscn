@@ -4,4 +4,4 @@
 
 [node name="HandgunAnimation" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_31h1k")
-animation = &"handgun_sprint"
+animation = &"handgun_melee"

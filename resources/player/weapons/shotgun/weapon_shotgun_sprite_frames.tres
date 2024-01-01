@@ -192,7 +192,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_ipoi8")
 }],
-"loop": true,
+"loop": false,
 "name": &"shotgun_melee",
 "speed": 25.0
 }, {
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("75_vxh8i")
 }],
-"loop": true,
+"loop": false,
 "name": &"shotgun_reload",
 "speed": 25.0
 }, {
@@ -336,7 +336,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("78_tlqgv")
 }],
-"loop": true,
+"loop": false,
 "name": &"shotgun_shoot",
 "speed": 25.0
 }, {

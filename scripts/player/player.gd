@@ -15,11 +15,6 @@ signal player_started_sprinting
 signal player_stopped_sprinting
 signal player_sprint_changed(maximum,current)
 
-signal player_shoot_weapon
-signal player_melee_attacked
-signal player_reloaded_weapon
-signal player_changed_to_next_weapon
-signal player_changed_to_previous_weapon
 signal player_turned_flashlight_on
 signal player_turned_flashlight_off
 
@@ -28,7 +23,27 @@ func _process(delta):
 	look_at_mouse()
 	movement_logic(delta)
 	vision_logic()
+	melee_logic()
+	shoot_logic()
+	weapon_switch_logic()
+
+# Weapon Switch
+func weapon_switch_logic():
+	if(Input.is_action_just_pressed("next_weapon")):
+		%WeaponSystem.next_weapon()
+	if(Input.is_action_just_pressed("previous_weapon")):
+		%WeaponSystem.previous_weapon()
 	
+	
+# Combat Logic
+func melee_logic():
+	if(Input.is_action_just_pressed("melee")):
+		%WeaponSystem.melee()
+func shoot_logic():
+	if(Input.is_action_just_pressed("shoot")):
+		%WeaponSystem.shoot()
+
+# Vision Cone Logic
 func vision_logic():
 	var zombies = %Vision.get_overlapping_bodies()
 	for zombie in zombies:
@@ -48,6 +63,8 @@ func _on_vision_body_shape_exited(_body_rid, body, _body_shape_index, _local_sha
 	if(body is TileMap == false):
 		body.hide()
 		
+
+# Movement Logic
 func movement_logic(delta):
 	if(Input.is_action_pressed("sprint") and player_current_sprint>0):
 		player_sprinting = true
