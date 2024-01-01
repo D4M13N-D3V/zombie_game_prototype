@@ -25,3 +25,7 @@ func _on_player_healed(_amount, current_health, maximum_health):
 func _on_player_player_sprint_changed(maximum, current):
 	%player_maximum_sprint_value.text = str(maximum)
 	%player_current_sprint_value.text = str(current)
+
+
+func _on_weapon_system_weapon_changed(weapon_id):
+	%player_current_weapon_value.text = weapon_id

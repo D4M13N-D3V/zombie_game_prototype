@@ -152,6 +152,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "false"
 
+[node name="player_current_weapon_label" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "player_current_weapon"
+
+[node name="player_current_weapon_value" type="Label" parent="HUD/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "false"
+
 [connection signal="damaged" from="." to="HUD" method="_on_player_damaged"]
 [connection signal="healed" from="." to="HUD" method="_on_player_healed"]
 [connection signal="player_sprint_changed" from="." to="HUD" method="_on_player_player_sprint_changed"]
@@ -163,4 +173,5 @@ text = "false"
 [connection signal="player_stopped_moving" from="." to="HUD" method="_on_player_player_stopped_moving"]
 [connection signal="player_stopped_sprinting" from="." to="WeaponSystem" method="_on_player_player_stopped_sprinting"]
 [connection signal="player_stopped_sprinting" from="." to="HUD" method="_on_player_player_stopped_sprinting"]
+[connection signal="weapon_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_weapon_changed"]
 [connection signal="body_shape_exited" from="Vision" to="." method="_on_vision_body_shape_exited"]

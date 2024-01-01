@@ -5,6 +5,8 @@ var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 var current_weapon = 0
 var current_weapon_animator = null
 
+signal weapon_changed(weapon_id)
+
 func _ready():
 	current_weapon = 0
 	initialize_weapon(weapons[current_weapon])
@@ -24,6 +26,7 @@ func initialize_weapon(weapon_id):
 		add_child(current_weapon_animator)
 	else:
 		print("Failed to load weapon animator scene for weapon ID: ", weapon_id)
+	weapon_changed.emit(weapon_id)
 
 
 func next_weapon():
