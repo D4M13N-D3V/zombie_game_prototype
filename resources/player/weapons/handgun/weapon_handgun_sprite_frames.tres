@@ -138,7 +138,7 @@ animations = [{
 "texture": ExtResource("20_mxvoh")
 }],
 "loop": true,
-"name": &"handgun_idle",
+"name": &"idle",
 "speed": 25.0
 }, {
 "frames": [{
@@ -188,7 +188,7 @@ animations = [{
 "texture": ExtResource("35_7tjxt")
 }],
 "loop": false,
-"name": &"handgun_melee",
+"name": &"melee",
 "speed": 25.0
 }, {
 "frames": [{
@@ -253,7 +253,7 @@ animations = [{
 "texture": ExtResource("55_3snw4")
 }],
 "loop": true,
-"name": &"handgun_move",
+"name": &"move",
 "speed": 25.0
 }, {
 "frames": [{
@@ -303,7 +303,7 @@ animations = [{
 "texture": ExtResource("70_6h2il")
 }],
 "loop": false,
-"name": &"handgun_reload",
+"name": &"reload",
 "speed": 25.0
 }, {
 "frames": [{
@@ -317,7 +317,7 @@ animations = [{
 "texture": ExtResource("73_grkpv")
 }],
 "loop": false,
-"name": &"handgun_shoot",
+"name": &"shoot",
 "speed": 25.0
 }, {
 "frames": [{
@@ -382,6 +382,6 @@ animations = [{
 "texture": ExtResource("55_3snw4")
 }],
 "loop": true,
-"name": &"handgun_sprint",
+"name": &"sprint",
 "speed": 40.0
 }]
