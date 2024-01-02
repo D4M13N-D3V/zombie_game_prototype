@@ -15,7 +15,6 @@ weapon_reload_animation = "_reload"
 weapon_walk_animation = "_walk"
 weapon_sprint_animation = "_sprint"
 weapon_animated_sprite = ExtResource("2_agldc")
-weapon_muzzle_offset = Vector2(0, 0)
 weapon_melee_enabled = true
 weapon_melee_range = 0.0
 weapon_melee_damage = 0.0

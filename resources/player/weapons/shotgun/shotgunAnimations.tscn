@@ -1,11 +1,141 @@
-[gd_scene load_steps=3 format=3 uid="uid://jxsbcmo2pr2o"]
+[gd_scene load_steps=12 format=3 uid="uid://jxsbcmo2pr2o"]
 
 [ext_resource type="SpriteFrames" uid="uid://dmxgi6kkpr2ah" path="res://resources/player/weapons/shotgun/weapon_shotgun_sprite_frames.tres" id="1_fs0yd"]
+[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_gfll8"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_rqr11"]
+[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_0q1g7"]
 
-[node name="FlashlightAnimation" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_fs0yd")
-animation = &"shotgun_reload"
+[sub_resource type="Animation" id="Animation_x5muw"]
+resource_name = "idle"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rhyyt"]
+resource_name = "move"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"move", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qrbuw"]
+resource_name = "sprint"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"sprint", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wau8y"]
+resource_name = "melee"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"melee", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_void2"]
+resource_name = "reload"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"reload", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_urjwv"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponAnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"shoot", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a1iv"]
+_data = {
+"idle": SubResource("Animation_x5muw"),
+"melee": SubResource("Animation_wau8y"),
+"move": SubResource("Animation_rhyyt"),
+"reload": SubResource("Animation_void2"),
+"shoot": SubResource("Animation_urjwv"),
+"sprint": SubResource("Animation_qrbuw")
+}
+
+[node name="ShotgunAnimation" type="Node2D"]
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8a1iv")
+}
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true
@@ -17,3 +147,19 @@ shadow_filter = 2
 texture = ExtResource("2_rqr11")
 offset = Vector2(0, 1650)
 texture_scale = 10.0
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(147, 51)
+scale = Vector2(0.180664, 0.180664)
+texture = ExtResource("2_gfll8")
+
+[node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
+position = Vector2(-47.4074, -9.48148)
+color = Color(0.870588, 0.419608, 0.203922, 1)
+texture = ExtResource("3_0q1g7")
+texture_scale = 20.0
+
+[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_fs0yd")
+animation = &"sprint"

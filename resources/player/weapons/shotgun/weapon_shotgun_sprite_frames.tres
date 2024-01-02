@@ -143,7 +143,7 @@ animations = [{
 "texture": ExtResource("20_r7tlv")
 }],
 "loop": true,
-"name": &"shotgun_idle",
+"name": &"idle",
 "speed": 25.0
 }, {
 "frames": [{
@@ -193,7 +193,7 @@ animations = [{
 "texture": ExtResource("35_ipoi8")
 }],
 "loop": false,
-"name": &"shotgun_melee",
+"name": &"melee",
 "speed": 25.0
 }, {
 "frames": [{
@@ -258,7 +258,7 @@ animations = [{
 "texture": ExtResource("55_d7i1s")
 }],
 "loop": true,
-"name": &"shotgun_move",
+"name": &"move",
 "speed": 25.0
 }, {
 "frames": [{
@@ -323,7 +323,7 @@ animations = [{
 "texture": ExtResource("75_vxh8i")
 }],
 "loop": false,
-"name": &"shotgun_reload",
+"name": &"reload",
 "speed": 25.0
 }, {
 "frames": [{
@@ -337,7 +337,7 @@ animations = [{
 "texture": ExtResource("78_tlqgv")
 }],
 "loop": false,
-"name": &"shotgun_shoot",
+"name": &"shoot",
 "speed": 25.0
 }, {
 "frames": [{
@@ -402,6 +402,6 @@ animations = [{
 "texture": ExtResource("55_d7i1s")
 }],
 "loop": true,
-"name": &"shotgun_sprint",
+"name": &"sprint",
 "speed": 40.0
 }]
