@@ -155,10 +155,13 @@ scale = Vector2(0.180664, 0.180664)
 texture = ExtResource("2_gfll8")
 
 [node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
+visible = false
 position = Vector2(-47.4074, -9.48148)
+scale = Vector2(5, 5)
 color = Color(0.870588, 0.419608, 0.203922, 1)
+shadow_enabled = true
 texture = ExtResource("3_0q1g7")
-texture_scale = 20.0
+texture_scale = 50.0
 
 [node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_fs0yd")
