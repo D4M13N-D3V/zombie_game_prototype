@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://copkqlkuul7ui"]
+
+[ext_resource type="SpriteFrames" uid="uid://dprrdc3f740t2" path="res://resources/blood_impact_sprite_frames.tres" id="1_g0dvl"]
+[ext_resource type="Script" path="res://scripts/BloodImpact.gd" id="2_nocjd"]
+
+[node name="BloodImpact" type="AnimatedSprite2D"]
+position = Vector2(1, -2)
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("1_g0dvl")
+autoplay = "default"
+frame = 15
+frame_progress = 1.0
+script = ExtResource("2_nocjd")
