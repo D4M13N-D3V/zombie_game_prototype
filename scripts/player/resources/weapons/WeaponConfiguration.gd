@@ -16,8 +16,6 @@ class_name WeaponConfiguration
 @export var weapon_walk_animation = "_walk"
 @export var weapon_sprint_animation = "_sprint"
 @export var weapon_animated_sprite:Resource
-@export var weapon_muzzle_flash:Resource
-@export var weapon_muzzle_offset:Vector2 = Vector2(0,0)
 
 #Melee Settings
 @export var weapon_melee_enabled:bool = false
