@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://8n4phmr84f6g"]
+[gd_scene load_steps=7 format=3 uid="uid://8n4phmr84f6g"]
 
 [ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
+[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_26q4t"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
+[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_xqyb5"]
 
-[node name="RifleAnimation" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_nhxjg")
-animation = &"rifle_reload"
+[sub_resource type="Animation" id="Animation_x5muw"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a1iv"]
+_data = {
+"idle": SubResource("Animation_x5muw")
+}
+
+[node name="RifleAnimation" type="Node2D"]
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8a1iv")
+}
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true
@@ -17,3 +30,18 @@ shadow_filter = 2
 texture = ExtResource("2_u8pou")
 offset = Vector2(0, 1650)
 texture_scale = 10.0
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+position = Vector2(144, 49)
+scale = Vector2(0.105469, 0.105469)
+texture = ExtResource("2_26q4t")
+
+[node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
+position = Vector2(-47.4074, -9.48148)
+color = Color(0.870588, 0.419608, 0.203922, 1)
+texture = ExtResource("3_xqyb5")
+texture_scale = 20.0
+
+[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_nhxjg")
+animation = &"rifle_idle"

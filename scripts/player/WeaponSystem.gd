@@ -1,7 +1,8 @@
 extends Node2D
 
 var current_weapon_configuration:Resource
-var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
+#var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
+var weapons = ["flashlight","knife","handgun"]
 @export var current_weapon = 0
 var current_weapon_animator = null
 
@@ -15,7 +16,7 @@ func _ready():
 func initialize_weapon(weapon_id):
 	current_weapon_configuration = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+".tres")
 	if current_weapon_animator != null:
-		current_weapon_animator.queue_free()
+		current_weapon_animator.get_parent().queue_free()
 	# Load and instantiate weapon animator scene
 	var weapon_animator_scene = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+"Animations.tscn")
 	

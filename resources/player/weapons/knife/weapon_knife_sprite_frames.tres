@@ -120,7 +120,7 @@ animations = [{
 "texture": ExtResource("20_kqyqf")
 }],
 "loop": true,
-"name": &"knife_idle",
+"name": &"idle",
 "speed": 25.0
 }, {
 "frames": [{
@@ -170,7 +170,7 @@ animations = [{
 "texture": ExtResource("35_kt8gb")
 }],
 "loop": false,
-"name": &"knife_melee",
+"name": &"melee",
 "speed": 25.0
 }, {
 "frames": [{
@@ -235,7 +235,7 @@ animations = [{
 "texture": ExtResource("55_1k377")
 }],
 "loop": true,
-"name": &"knife_move",
+"name": &"move",
 "speed": 25.0
 }, {
 "frames": [{
@@ -300,6 +300,6 @@ animations = [{
 "texture": ExtResource("55_1k377")
 }],
 "loop": true,
-"name": &"knife_sprint",
+"name": &"sprint",
 "speed": 40.0
 }]
