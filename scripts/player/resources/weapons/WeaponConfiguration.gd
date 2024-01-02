@@ -10,11 +10,6 @@ class_name WeaponConfiguration
 @export var weapon_sway_speed:float = 1.0
 
 #Animation Settings
-@export var weapon_melee_animation  = "_melee"
-@export var weapon_shoot_animation  = "_shoot"
-@export var weapon_reload_animation = "_reload"
-@export var weapon_walk_animation = "_walk"
-@export var weapon_sprint_animation = "_sprint"
 @export var weapon_animated_sprite:Resource
 
 #Melee Settings
@@ -30,3 +25,4 @@ class_name WeaponConfiguration
 @export var weapon_ranged_damage:float = 0.0
 @export var weapon_ranged_accuracy:float = 0.0
 @export var weapon_ranged_bullet_rate:int = 1
+@export var weapon_ranged_shake_intensity:float = 60.0
