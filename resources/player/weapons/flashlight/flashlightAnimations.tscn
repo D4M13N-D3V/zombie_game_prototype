@@ -1,11 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn11o0qyapyf4"]
+[gd_scene load_steps=8 format=3 uid="uid://bn11o0qyapyf4"]
 
 [ext_resource type="SpriteFrames" uid="uid://ddxy6l21vmogm" path="res://resources/player/weapons/flashlight/weapon_flashlight_sprite_frames.tres" id="1_0axgm"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_jf5fi"]
 
-[node name="FlashlightAnimation" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_0axgm")
-animation = &"flashlight_melee"
+[sub_resource type="Animation" id="Animation_1pp8w"]
+resource_name = "idle"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_b8ich"]
+resource_name = "melee"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"melee", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c4ss7"]
+resource_name = "move"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"move", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_drkde"]
+resource_name = "sprint"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"sprint", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ni4i"]
+_data = {
+"idle": SubResource("Animation_1pp8w"),
+"melee": SubResource("Animation_b8ich"),
+"move": SubResource("Animation_c4ss7"),
+"sprint": SubResource("Animation_drkde")
+}
+
+[node name="FlashlightAnimation" type="Node2D"]
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ni4i")
+}
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true
@@ -17,3 +96,7 @@ shadow_filter = 2
 texture = ExtResource("2_jf5fi")
 offset = Vector2(0, 1650)
 texture_scale = 10.0
+
+[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_0axgm")
+animation = &"sprint"

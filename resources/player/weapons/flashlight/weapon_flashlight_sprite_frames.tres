@@ -120,7 +120,7 @@ animations = [{
 "texture": ExtResource("20_f35yl")
 }],
 "loop": true,
-"name": &"flashlight_idle",
+"name": &"idle",
 "speed": 25.0
 }, {
 "frames": [{
@@ -170,7 +170,7 @@ animations = [{
 "texture": ExtResource("35_53bxp")
 }],
 "loop": false,
-"name": &"flashlight_melee",
+"name": &"melee",
 "speed": 25.0
 }, {
 "frames": [{
@@ -235,7 +235,7 @@ animations = [{
 "texture": ExtResource("55_ftol4")
 }],
 "loop": true,
-"name": &"flashlight_move",
+"name": &"move",
 "speed": 25.0
 }, {
 "frames": [{
@@ -300,6 +300,6 @@ animations = [{
 "texture": ExtResource("55_ftol4")
 }],
 "loop": true,
-"name": &"flashlight_sprint",
+"name": &"sprint",
 "speed": 40.0
 }]
