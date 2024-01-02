@@ -28,6 +28,8 @@ func _process(delta):
 	melee_logic()
 	shoot_logic()
 	weapon_switch_logic()
+	if(%CharacterAnimationPlayer.is_playing()==false):
+		%CharacterAnimationPlayer.play("Idle")
 
 # Weapon Switch
 func weapon_switch_logic():
@@ -99,15 +101,19 @@ func movement_logic(delta):
 	if(get("character_sprinting")==true):
 		if(velocity.length()>0):
 			player_started_sprinting.emit()
+			%CharacterAnimationPlayer.play("Run")
 		else:
 			player_stopped_moving.emit()
 			player_stopped_sprinting.emit()
+			%CharacterAnimationPlayer.play("Idle")
 	else:
 		if(velocity.length()>0):
 			player_started_moving.emit()
+			%CharacterAnimationPlayer.play("Walk")
 		else:
 			player_stopped_moving.emit()
 			player_stopped_sprinting.emit()
+			%CharacterAnimationPlayer.play("Idle")
 	
 func look_at_mouse():
 	look_at(get_global_mouse_position())

@@ -153,7 +153,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("21_jjaue")
 }],
-"loop": true,
+"loop": false,
 "name": &"Run",
 "speed": 25.0
 }, {
@@ -218,7 +218,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("41_npfgv")
 }],
-"loop": true,
+"loop": false,
 "name": &"StrafeLeft",
 "speed": 25.0
 }, {
@@ -283,7 +283,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("61_5v4p8")
 }],
-"loop": true,
+"loop": false,
 "name": &"StrafeRight",
 "speed": 25.0
 }, {
@@ -348,7 +348,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("81_a5klr")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 25.0
 }]
