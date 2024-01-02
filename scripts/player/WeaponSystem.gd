@@ -2,7 +2,7 @@ extends Node2D
 
 var current_weapon_configuration:Resource
 #var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
-var weapons = ["flashlight","knife","handgun"]
+var weapons = ["flashlight","knife","handgun", "rifle"]
 @export var current_weapon = 0
 var current_weapon_animator = null
 
