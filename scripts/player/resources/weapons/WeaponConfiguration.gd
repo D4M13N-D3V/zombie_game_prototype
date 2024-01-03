@@ -14,9 +14,7 @@ class_name WeaponConfiguration
 
 #Melee Settings
 @export var weapon_melee_enabled:bool = false
-@export var weapon_melee_range:float = 0.0
 @export var weapon_melee_damage:float = 0.0
-@export var weapon_melee_aoe:bool = false
 
 #Ranged Settings
 @export var weapon_ranged_enabled:bool = false
