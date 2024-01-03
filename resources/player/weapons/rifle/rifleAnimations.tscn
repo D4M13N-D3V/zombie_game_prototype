@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://8n4phmr84f6g"]
+[gd_scene load_steps=13 format=3 uid="uid://8n4phmr84f6g"]
 
+[ext_resource type="AudioStream" uid="uid://buaiv3ru0nf8i" path="res://sound/rifle_shot.mp3" id="1_82gb8"]
 [ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
 [ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_26q4t"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
@@ -102,6 +103,20 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RifleSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_qrbuw"]
 resource_name = "sprint"
@@ -165,3 +180,6 @@ texture_scale = 50.0
 [node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_nhxjg")
 animation = &"sprint"
+
+[node name="RifleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_82gb8")

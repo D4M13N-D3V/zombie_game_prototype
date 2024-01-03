@@ -101,19 +101,23 @@ func movement_logic(delta):
 	if(get("character_sprinting")==true):
 		if(velocity.length()>0):
 			player_started_sprinting.emit()
-			%CharacterAnimationPlayer.play("Run")
+			if(%CharacterAnimationPlayer.current_animation!="Run"):
+				%CharacterAnimationPlayer.play("Run")
 		else:
 			player_stopped_moving.emit()
 			player_stopped_sprinting.emit()
-			%CharacterAnimationPlayer.play("Idle")
+			if(%CharacterAnimationPlayer.current_animation!="Idle"):
+				%CharacterAnimationPlayer.play("Idle")
 	else:
 		if(velocity.length()>0):
 			player_started_moving.emit()
-			%CharacterAnimationPlayer.play("Walk")
+			if(%CharacterAnimationPlayer.current_animation!="Walk"):
+				%CharacterAnimationPlayer.play("Walk")
 		else:
 			player_stopped_moving.emit()
 			player_stopped_sprinting.emit()
-			%CharacterAnimationPlayer.play("Idle")
+			if(%CharacterAnimationPlayer.current_animation!="Idle"):
+				%CharacterAnimationPlayer.play("Idle")
 	
 func look_at_mouse():
 	look_at(get_global_mouse_position())

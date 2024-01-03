@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://btajg8njgxas3"]
+[gd_scene load_steps=4 format=3 uid="uid://btajg8njgxas3"]
 
 [ext_resource type="SpriteFrames" uid="uid://dy2cegjmm5vxu" path="res://resources/wall_impact_sprite_frames.tres" id="1_nifk3"]
 [ext_resource type="Script" path="res://scripts/BloodImpact.gd" id="2_wx8aj"]
+[ext_resource type="AudioStream" uid="uid://ckycsfshry31w" path="res://sound/bullet_environment_impact.mp3" id="3_5crlg"]
 
 [node name="WallImpact" type="AnimatedSprite2D"]
 position = Vector2(1, -2)
@@ -9,3 +10,11 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("1_nifk3")
 autoplay = "default"
 script = ExtResource("2_wx8aj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5crlg")
+volume_db = 2.555
+pitch_scale = 0.98
+autoplay = true
+max_distance = 750.0
+attenuation = 1.51572

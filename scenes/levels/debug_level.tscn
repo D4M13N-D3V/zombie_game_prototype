@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://b20ukg3nv2tt6"]
+[gd_scene load_steps=31 format=3 uid="uid://b20ukg3nv2tt6"]
 
 [ext_resource type="Texture2D" uid="uid://c5dmbbimywcep" path="res://asset_packs/kenney_scribble-dungeons/Tilesheet/tilesheet.png" id="1_nd7tf"]
 [ext_resource type="PackedScene" uid="uid://0ysd2u5hcwjf" path="res://scenes/player/Player.tscn" id="2_6381t"]
 [ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://scenes/FlickeringLight.tscn" id="3_ka5rn"]
+[ext_resource type="AudioStream" uid="uid://y7v3hvlaxxrx" path="res://sound/flickering_light.mp3" id="4_532gj"]
 [ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://scenes/Zombie.tscn" id="4_bvna3"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_swbf3"]
@@ -627,6 +628,13 @@ position = Vector2(-57, -230)
 
 [node name="FlickeringLight" parent="." instance=ExtResource("3_ka5rn")]
 position = Vector2(-630, -282)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FlickeringLight"]
+rotation = 1.25614
+stream = ExtResource("4_532gj")
+pitch_scale = 1.01
+autoplay = true
+max_distance = 580.0
 
 [node name="Zombie" parent="." instance=ExtResource("4_bvna3")]
 visible = false

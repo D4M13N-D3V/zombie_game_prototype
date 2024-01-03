@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://copkqlkuul7ui"]
+[gd_scene load_steps=4 format=3 uid="uid://copkqlkuul7ui"]
 
 [ext_resource type="SpriteFrames" uid="uid://dprrdc3f740t2" path="res://resources/blood_impact_sprite_frames.tres" id="1_g0dvl"]
 [ext_resource type="Script" path="res://scripts/BloodImpact.gd" id="2_nocjd"]
+[ext_resource type="AudioStream" uid="uid://bf86d03gx3yq4" path="res://sound/bullet_flesh_impact.mp3" id="3_8of4b"]
 
 [node name="BloodImpact" type="AnimatedSprite2D"]
 position = Vector2(1, -2)
@@ -10,3 +11,8 @@ sprite_frames = ExtResource("1_g0dvl")
 autoplay = "default"
 frame_progress = 1.0
 script = ExtResource("2_nocjd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8of4b")
+volume_db = 0.627
+autoplay = true
