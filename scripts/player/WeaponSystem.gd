@@ -51,26 +51,41 @@ func previous_weapon():
 func shoot():
 	if(current_weapon_configuration.weapon_ranged_enabled==true):
 		current_weapon_animator.play("shoot")
-		%ZoomCamera.apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
-		if %Muzzle.is_colliding():
-			if(%Muzzle.get_collider().has_method("damage")==true):
-				%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
-				var impact_location = %Muzzle.get_collision_point()
+		get_parent().get_node("ZoomCamera").apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
+		if get_parent().get_node("Muzzle").is_colliding():
+			if(get_parent().get_node("Muzzle").get_collider().has_method("damage")==true):
+				get_parent().get_node("Muzzle").get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
+				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
 				var impact = BLOOD_IMPACT.instantiate()
-				%Muzzle.get_collider().add_child(impact)
+				get_parent().get_node("Muzzle").get_collider().add_child(impact)
 				impact.global_position = impact_location
 			else:
-				var impact_location = %Muzzle.get_collision_point()
+				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
 				var impact = WALL_IMPACT.instantiate()
-				%Muzzle.get_collider().add_child(impact)
+				get_parent().get_node("Muzzle").get_collider().add_child(impact)
 				impact.global_position = impact_location
 
 func melee():
 	if(current_weapon_configuration.weapon_melee_enabled==true):
 		current_weapon_animator.play("melee")
-		%ZoomCamera.apply_shake(10.0, 4.0)
-		#MELEE DAMAGE LOGIC
+		get_parent().get_node("ZoomCamera").apply_shake(10.0, 4.0)
+		var targets = %MeleeZone.get_overlapping_bodies()
+		for target in targets:
+			if(target is TileMap == false):
+				target.damage(current_weapon_configuration.weapon_melee_damage)
+				var impact = BLOOD_IMPACT.instantiate()
+				target.add_child(impact)
+				impact.global_position = target.global_position
 
+func is_line_of_sight_clear(enemy):
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(enemy.global_position, global_position)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	if(result.is_empty() or result.is_empty()==false and result["rid"]==enemy.get_rid()):
+		return true
+	return false
+	
 func check_magazine():
 	pass
 	
