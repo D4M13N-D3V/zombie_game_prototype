@@ -5,8 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bf86d03gx3yq4" path="res://sound/bullet_flesh_impact.mp3" id="3_8of4b"]
 
 [node name="BloodImpact" type="AnimatedSprite2D"]
-position = Vector2(1, -2)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("1_g0dvl")
 autoplay = "default"
 frame_progress = 1.0
