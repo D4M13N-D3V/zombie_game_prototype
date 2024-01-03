@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"idle", 1.0, false],
+"args": [&"Idle", 1.0, false],
 "method": &"play"
 }]
 }
@@ -163,9 +163,10 @@ unique_name_in_owner = true
 position = Vector2(1, 8)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+[node name="VisionCircle" type="CollisionShape2D" parent="Vision"]
 position = Vector2(691, 104)
 shape = SubResource("CircleShape2D_xjjbl")
+debug_color = Color(0.780392, 0.435294, 0, 0.105882)
 
 [node name="Muzzle" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -299,7 +300,7 @@ libraries = {
 current = true
 
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_4v47l")
+stream = ExtResource("6_lrcgs")
 
 [connection signal="damaged" from="." to="HUD" method="_on_player_damaged"]
 [connection signal="healed" from="." to="HUD" method="_on_player_healed"]
