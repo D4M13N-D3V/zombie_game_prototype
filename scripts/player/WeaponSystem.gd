@@ -57,25 +57,26 @@ func shoot():
 				get_parent().get_node("Muzzle").get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
 				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
 				var impact = BLOOD_IMPACT.instantiate()
-				get_parent().get_node("Muzzle").get_collider().add_child(impact)
-				impact.global_position = impact_location
+				get_parent().get_parent().get_parent().add_child(impact)
+				impact.global_position =impact_location
 			else:
 				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
 				var impact = WALL_IMPACT.instantiate()
-				get_parent().get_node("Muzzle").get_collider().add_child(impact)
+				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position = impact_location
 
 func melee():
 	if(current_weapon_configuration.weapon_melee_enabled==true):
 		current_weapon_animator.play("melee")
-		get_parent().get_node("ZoomCamera").apply_shake(10.0, 4.0)
+		get_parent().get_node("ZoomCamera").apply_shake(100.0, 4.0)
 		var targets = %MeleeZone.get_overlapping_bodies()
 		for target in targets:
 			if(target is TileMap == false):
 				target.damage(current_weapon_configuration.weapon_melee_damage)
 				var impact = BLOOD_IMPACT.instantiate()
-				target.add_child(impact)
+				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position = target.global_position
+				impact.global_scale = Vector2(0.19,0.19)
 
 func is_line_of_sight_clear(enemy):
 	var space_state = get_world_2d().direct_space_state

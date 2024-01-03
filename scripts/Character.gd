@@ -27,7 +27,7 @@ func _ready():
 	heal(1)
 
 func damage(amount):
-	if(amount>character_current_health):
+	if(amount>=character_current_health):
 		character_current_health=0
 		die()
 	else:

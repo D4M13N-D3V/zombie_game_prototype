@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://b20ukg3nv2tt6"]
+[gd_scene load_steps=32 format=3 uid="uid://b20ukg3nv2tt6"]
 
 [ext_resource type="Texture2D" uid="uid://c5dmbbimywcep" path="res://asset_packs/kenney_scribble-dungeons/Tilesheet/tilesheet.png" id="1_nd7tf"]
 [ext_resource type="PackedScene" uid="uid://0ysd2u5hcwjf" path="res://scenes/player/Player.tscn" id="2_6381t"]
 [ext_resource type="PackedScene" uid="uid://nb2xnubcoir0" path="res://scenes/FlickeringLight.tscn" id="3_ka5rn"]
 [ext_resource type="AudioStream" uid="uid://y7v3hvlaxxrx" path="res://sound/flickering_light.mp3" id="4_532gj"]
 [ext_resource type="PackedScene" uid="uid://337tdwbqbmkt" path="res://scenes/Zombie.tscn" id="4_bvna3"]
+[ext_resource type="AudioStream" uid="uid://dpdbd8mkpx5gg" path="res://sound/creepymoozic.mp3" id="6_c7s25"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_swbf3"]
 polygon = PackedVector2Array(-32, 9.75, 32, 9.25, 32, 32, -32, 32)
@@ -700,3 +701,9 @@ rotation = 0.924077
 visible = false
 position = Vector2(-53, -452)
 rotation = 1.29535
+
+[node name="bgmusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_c7s25")
+volume_db = -6.86
+autoplay = true
+attenuation = 1e-05
