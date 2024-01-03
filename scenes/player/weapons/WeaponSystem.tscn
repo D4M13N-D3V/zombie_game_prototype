@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://37j1d4jjisg"]
+[gd_scene load_steps=3 format=3 uid="uid://37j1d4jjisg"]
 
 [ext_resource type="Script" path="res://scripts/player/WeaponSystem.gd" id="1_fq5u3"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x78lv"]
+radius = 92.0
+height = 328.0
+
 [node name="WeaponSystem" type="Node2D"]
 script = ExtResource("1_fq5u3")
+
+[node name="MeleeZone" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 3
+collision_mask = 2
+
+[node name="MeleeCapsule" type="CollisionShape2D" parent="MeleeZone"]
+position = Vector2(53, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_x78lv")
+debug_color = Color(1, 0, 0.101961, 0.419608)
