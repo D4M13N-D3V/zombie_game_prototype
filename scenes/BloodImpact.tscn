@@ -8,6 +8,5 @@ position = Vector2(1, -2)
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("1_g0dvl")
 autoplay = "default"
-frame = 15
 frame_progress = 1.0
 script = ExtResource("2_nocjd")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btajg8njgxas3"]
+
+[ext_resource type="SpriteFrames" uid="uid://dy2cegjmm5vxu" path="res://resources/wall_impact_sprite_frames.tres" id="1_nifk3"]
+[ext_resource type="Script" path="res://scripts/BloodImpact.gd" id="2_wx8aj"]
+
+[node name="WallImpact" type="AnimatedSprite2D"]
+position = Vector2(1, -2)
+scale = Vector2(0.1, 0.1)
+sprite_frames = ExtResource("1_nifk3")
+autoplay = "default"
+script = ExtResource("2_wx8aj")

@@ -7,6 +7,7 @@ var weapons = ["flashlight","knife","handgun", "rifle", "shotgun"]
 var current_weapon_animator = null
 
 const BLOOD_IMPACT = preload("res://scenes/BloodImpact.tscn")
+const WALL_IMPACT = preload("res://scenes/WallImpact.tscn")
 
 signal weapon_changed(weapon_id)
 
@@ -51,12 +52,18 @@ func shoot():
 	if(current_weapon_configuration.weapon_ranged_enabled==true):
 		current_weapon_animator.play("shoot")
 		%ZoomCamera.apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
-		if %Muzzle.is_colliding() and %Muzzle.get_collider().has_method("damage"):
-			%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
-			var impact_location = %Muzzle.get_collision_point()
-			var impact = BLOOD_IMPACT.instantiate()
-			%Muzzle.get_collider().add_child(impact)
-			impact.global_position = impact_location
+		if %Muzzle.is_colliding():
+			if(%Muzzle.get_collider().has_method("damage")==true):
+				%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
+				var impact_location = %Muzzle.get_collision_point()
+				var impact = BLOOD_IMPACT.instantiate()
+				%Muzzle.get_collider().add_child(impact)
+				impact.global_position = impact_location
+			else:
+				var impact_location = %Muzzle.get_collision_point()
+				var impact = WALL_IMPACT.instantiate()
+				%Muzzle.get_collider().add_child(impact)
+				impact.global_position = impact_location
 
 func melee():
 	if(current_weapon_configuration.weapon_melee_enabled==true):
