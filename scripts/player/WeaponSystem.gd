@@ -3,6 +3,8 @@ extends Node2D
 var current_weapon_configuration:Resource
 #var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 var weapons = ["flashlight","knife","handgun", "rifle", "shotgun"]
+var ammo = {}
+var loadedAmmo = {}
 @export var current_weapon = 0
 var current_weapon_animator = null
 
@@ -10,6 +12,8 @@ const BLOOD_IMPACT = preload("res://scenes/BloodImpact.tscn")
 const WALL_IMPACT = preload("res://scenes/WallImpact.tscn")
 
 signal weapon_changed(weapon_id)
+signal ammo_changed(amount, maximum)
+signal magazine_changed(amount,maximum)
 
 func _ready():
 	current_weapon = 0
@@ -31,6 +35,12 @@ func initialize_weapon(weapon_id):
 		current_weapon_animator.play("idle")
 	else:
 		print("Failed to load weapon animator scene for weapon ID: ", weapon_id)
+	
+	if(ammo.has(weapon_id)==false):
+		ammo[weapon_id] = 100
+		loadedAmmo[weapon_id] = 0
+		ammo_changed.emit(100, current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(0, current_weapon_configuration.weapon_ranged_capacity)
 	weapon_changed.emit(weapon_id)
 
 func next_weapon():
@@ -46,10 +56,27 @@ func previous_weapon():
 		current_weapon = weapons.size() - 1
 	initialize_weapon(weapons[current_weapon])
 
-	
+func reload():
+	if(current_weapon_configuration.weapon_ranged_enabled==true and ammo[weapons[current_weapon]]>0 ):
+		current_weapon_animator.play("reload")
+		var capacity = current_weapon_configuration.weapon_ranged_capacity
+		var current = ammo[weapons[current_weapon]]
+		if(capacity>current):
+			ammo[weapons[current_weapon]] = 0
+			loadedAmmo[weapons[current_weapon]] = current
+		elif(loadedAmmo[weapons[current_weapon]]<capacity):
+			var difference = capacity-loadedAmmo[weapons[current_weapon]]
+			ammo[weapons[current_weapon]] = current-difference
+			loadedAmmo[weapons[current_weapon]] = capacity
+		else:
+			ammo[weapons[current_weapon]] = ammo[weapons[current_weapon]] - capacity
+			loadedAmmo[weapons[current_weapon]] = capacity
+		ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
 
 func shoot():
-	if(current_weapon_configuration.weapon_ranged_enabled==true):
+	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0):
+		loadedAmmo[weapons[current_weapon]] = loadedAmmo[weapons[current_weapon]]-1
 		current_weapon_animator.play("shoot")
 		get_parent().get_node("ZoomCamera").apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
 		if get_parent().get_node("Muzzle").is_colliding():
@@ -64,6 +91,7 @@ func shoot():
 				var impact = WALL_IMPACT.instantiate()
 				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position = impact_location
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
 
 func melee():
 	if(current_weapon_configuration.weapon_melee_enabled==true):
@@ -89,9 +117,6 @@ func is_line_of_sight_clear(enemy):
 	
 func check_magazine():
 	pass
-	
-func reload():
-	pass
 
 func is_playing_melee_anim():
 	if(current_weapon_animator==null):
@@ -105,7 +130,7 @@ func is_playing_shoot_anim():
 	if(current_weapon_animator==null):
 		return false
 	var animation = current_weapon_animator.current_animation
-	if(animation=="shoot"):
+	if(animation=="shoot" or animation=="reload"):
 		return true
 	return false
 	

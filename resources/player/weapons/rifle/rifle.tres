@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://j7o7bquukgap"]
 
-[ext_resource type="Script" path="res://scripts/player/resources/weapons/WeaponConfiguration.gd" id="1_jlp83"]
+[ext_resource type="Script" path="res://scripts/player/resources/WeaponConfiguration.gd" id="1_jlp83"]
 [ext_resource type="PackedScene" uid="uid://8n4phmr84f6g" path="res://resources/player/weapons/rifle/rifleAnimations.tscn" id="2_g7bgy"]
 
 [resource]
@@ -11,13 +11,12 @@ weapon_description = "A semi automatic rifle chambered in NATO 5.56 with magazin
 weapon_sway_speed = 1.0
 weapon_animated_sprite = ExtResource("2_g7bgy")
 weapon_melee_enabled = true
-weapon_melee_range = 0.0
 weapon_melee_damage = 1.0
-weapon_melee_aoe = false
 weapon_ranged_enabled = true
-weapon_ranged_capacity = 0
-weapon_ranged_maximum = 0
+weapon_ranged_capacity = 30
+weapon_ranged_maximum = 60
 weapon_ranged_damage = 1.0
 weapon_ranged_accuracy = 0.0
 weapon_ranged_bullet_rate = 1
 weapon_ranged_shake_intensity = 60.0
+weapon_ammo_type = 0

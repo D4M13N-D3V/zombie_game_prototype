@@ -169,7 +169,9 @@ texture_scale = 50.0
 
 [node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_31h1k")
-animation = &"move"
+animation = &"reload"
+frame = 14
+frame_progress = 1.0
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true

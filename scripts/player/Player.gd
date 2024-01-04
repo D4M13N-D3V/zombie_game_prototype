@@ -11,7 +11,7 @@ signal player_turned_flashlight_on
 signal player_turned_flashlight_off
 
 func _ready():
-	heal(1)
+	heal(character_health_maximum)
 	set("character_movement_speed",8000.0)
 	set("character_sprint_use_modifier",false)
 	set("character_sprint_modifier",2.0)
@@ -27,6 +27,7 @@ func _process(delta):
 	vision_logic()
 	melee_logic()
 	shoot_logic()
+	reload_logic()
 	weapon_switch_logic()
 	if(%CharacterAnimationPlayer.is_playing()==false):
 		%CharacterAnimationPlayer.play("Idle")
@@ -46,6 +47,9 @@ func melee_logic():
 func shoot_logic():
 	if(Input.is_action_just_pressed("shoot")):
 		%WeaponSystem.shoot()
+func reload_logic():
+	if(Input.is_action_just_pressed("reload")):
+		%WeaponSystem.reload()
 
 # Vision Cone Logic
 func vision_logic():

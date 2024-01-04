@@ -6,3 +6,4 @@ func _ready():
 func _process(_delta):
 	if(is_playing()==false):
 		queue_free()
+ 
