@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://00ndvodxjkp5"]
 
-[ext_resource type="Script" path="res://scripts/player/resources/WeaponConfiguration.gd" id="1_3dl02"]
+[ext_resource type="Script" path="res://scripts/characters/resources/WeaponConfiguration.gd" id="1_3dl02"]
 [ext_resource type="PackedScene" uid="uid://bmukq8ulicvip" path="res://resources/player/weapons/handgun/handgunAnimations.tscn" id="2_43jmy"]
 
 [resource]

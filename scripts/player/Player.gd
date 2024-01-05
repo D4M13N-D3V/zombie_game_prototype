@@ -11,7 +11,6 @@ signal player_turned_flashlight_on
 signal player_turned_flashlight_off
 
 func _ready():
-	heal(character_health_maximum)
 	set("character_movement_speed",8000.0)
 	set("character_sprint_use_modifier",false)
 	set("character_sprint_modifier",2.0)
@@ -78,28 +77,14 @@ func movement_logic(delta):
 	
 	if(Input.is_action_just_pressed("sprint")):
 		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*2)
+		set("character_sprinting",true)
 		
 	if(Input.is_action_just_released("sprint")):
 		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*0.5)
-	
-	if(Input.is_action_pressed("sprint") and get("character_current_sprint")>0):
-		set("character_sprinting",true)
-	else:
 		set("character_sprinting",false)
 		
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if(get("character_sprinting")):
-		velocity = direction * get("character_movement_speed") * delta *1.5
-		if(velocity.length()>0.0):
-			var sprint = clamp(get("character_current_sprint") -get("character_sprint_drain_rate") * delta, 0, get("character_sprint_maximum"))
-			set("character_current_sprint",sprint)
-			player_sprint_changed.emit(get("character_sprint_maximum"),get("character_current_sprint"))
-	else:
-		velocity = direction * get("character_movement_speed") * delta
-		var sprint = clamp(get("character_current_sprint") + get("character_sprint_regen_rate") * delta, 0, get("character_sprint_maximum"))
-		set("character_current_sprint", sprint)
-		player_sprint_changed.emit(get("character_sprint_maximum"),get("character_current_sprint"))
-			
+	move_character(direction, delta)
 	move_and_slide()
 
 	if(get("character_sprinting")==true):

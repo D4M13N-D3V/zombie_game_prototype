@@ -632,7 +632,6 @@ color = Color(0.152941, 0.141176, 0.0352941, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_6381t")]
 position = Vector2(-57, -230)
-character_sprint_drain_rate = 15.0
 
 [node name="FlickeringLight" parent="." instance=ExtResource("3_ka5rn")]
 position = Vector2(-630, -282)

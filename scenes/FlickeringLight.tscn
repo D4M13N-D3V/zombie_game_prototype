@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nb2xnubcoir0"]
 
-[ext_resource type="Script" path="res://scripts/flickering_light.gd" id="1_lgk7p"]
+[ext_resource type="Script" path="res://scripts/environment/flickering_light.gd" id="1_lgk7p"]
 [ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="1_otrgh"]
 
 [node name="FlickeringLight" type="PointLight2D"]
