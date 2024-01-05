@@ -5,10 +5,6 @@ signal player_started_moving
 signal player_stopped_moving
 signal player_started_sprinting
 signal player_stopped_sprinting
-signal player_sprint_changed(maximum,current)
-
-signal player_turned_flashlight_on
-signal player_turned_flashlight_off
 
 func _process(delta):
 	look_at_mouse()

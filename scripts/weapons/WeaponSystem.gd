@@ -2,7 +2,7 @@ extends Node2D
 @export var IsPlayer = true
 var current_weapon_configuration:Resource
 #var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
-var weapons = ["flashlight","knife","handgun", "rifle", "shotgun"]
+var weapons = ["flashlight"]
 var ammo = {}
 var loadedAmmo = {}
 @export var current_weapon = 0
@@ -44,6 +44,11 @@ func reload_logic():
 	if(Input.is_action_just_pressed("reload")):
 		reload()
 
+func add_weapon(weapon_id):
+	weapons.append(weapon_id)
+	
+func remove_weapon(weapon_id):
+	weapons.erase(weapon_id)
 
 func initialize_weapon(weapon_id):
 	current_weapon_configuration = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+".tres")

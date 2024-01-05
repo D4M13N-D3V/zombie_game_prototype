@@ -46,6 +46,10 @@ func move_character(direction, delta):
 func kill():
 	if(character_dead==false):
 		character_death.emit()
+		death_callback()
+	
+func death_callback():
+	queue_free()
 	
 func revive():
 	if(character_dead==true):
@@ -58,7 +62,7 @@ func damage(amount):
 		var leftOver = amount - character_armor_current
 		remove_armor(amount)
 		character_armor_current = 0
-		remove_armor(leftOver)
+		remove_health(leftOver)
 
 func give_health(amount):
 	if(amount<0):
@@ -81,6 +85,7 @@ func remove_health(amount):
 		var futureHealth = character_health_current - amount
 		if(futureHealth <= 0):
 			character_health_current = 0
+			kill()
 		else:
 			character_health_current = futureHealth
 
