@@ -213,6 +213,7 @@ animation = &"sprint"
 
 [node name="RifleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_82gb8")
+max_polyphony = 100
 
 [node name="MeleeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_7avsp")

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/player/HUD.gd" id="1_2q3ud"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5mc7"]
-bg_color = Color(1, 0.32549, 0.388235, 0.898039)
+bg_color = Color(0.368627, 0, 0.0784314, 0.898039)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ket3e"]
-bg_color = Color(0, 0.643589, 0.91875, 0.898039)
+bg_color = Color(0, 0.164706, 0.25098, 0.898039)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riw2j"]
 bg_color = Color(1, 1, 1, 0.811765)

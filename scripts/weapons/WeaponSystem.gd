@@ -124,7 +124,7 @@ func reload():
 		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
 
 func shoot():
-	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0 and %RangedTimer.is_stopped()==true):
+	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0 and %RangedTimer.is_stopped()==true and current_weapon_animator.current_animation!="reload"):
 		loadedAmmo[weapons[current_weapon]] = loadedAmmo[weapons[current_weapon]]-1
 		current_weapon_animator.play("shoot")
 		%RangedTimer.start(current_weapon_configuration.weapon_ranged_cooldown)
