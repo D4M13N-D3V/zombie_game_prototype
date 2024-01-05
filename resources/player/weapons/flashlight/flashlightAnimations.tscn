@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn11o0qyapyf4"]
+[gd_scene load_steps=9 format=3 uid="uid://bn11o0qyapyf4"]
 
 [ext_resource type="SpriteFrames" uid="uid://ddxy6l21vmogm" path="res://resources/player/weapons/flashlight/weapon_flashlight_sprite_frames.tres" id="1_0axgm"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_jf5fi"]
+[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="3_f4b07"]
 
 [sub_resource type="Animation" id="Animation_1pp8w"]
 resource_name = "idle"
@@ -34,6 +35,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"melee", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
 "method": &"play"
 }]
 }
@@ -101,3 +116,7 @@ texture_scale = 10.0
 [node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_0axgm")
 animation = &"sprint"
+
+[node name="MeleeAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f4b07")
+volume_db = 2.0

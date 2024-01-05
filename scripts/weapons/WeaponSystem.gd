@@ -94,12 +94,16 @@ func next_weapon():
 	else:
 		current_weapon += 1
 	initialize_weapon(weapons[current_weapon])
+	ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+	magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
 
 func previous_weapon():
 	current_weapon -= 1
 	if current_weapon < 0:
 		current_weapon = weapons.size() - 1
 	initialize_weapon(weapons[current_weapon])
+	ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+	magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
 
 func reload():
 	if(current_weapon_configuration.weapon_ranged_enabled==true and ammo[weapons[current_weapon]]>0 ):
@@ -117,7 +121,7 @@ func reload():
 			ammo[weapons[current_weapon]] = ammo[weapons[current_weapon]] - capacity
 			loadedAmmo[weapons[current_weapon]] = capacity
 		ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
-		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
 
 func shoot():
 	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0 and %RangedTimer.is_stopped()==true):

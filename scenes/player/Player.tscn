@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0ysd2u5hcwjf"]
+[gd_scene load_steps=14 format=3 uid="uid://0ysd2u5hcwjf"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_7850m"]
 [ext_resource type="SpriteFrames" uid="uid://blro1j2a07hbj" path="res://resources/player/player_sprite_frames.tres" id="1_x0c5y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbgcibgcw7ty0" path="res://scenes/player/ZoomCamera.tscn" id="4_f38ed"]
 [ext_resource type="AudioStream" uid="uid://s6dn4nwrx5c" path="res://sound/run.mp3" id="6_4v47l"]
 [ext_resource type="AudioStream" uid="uid://b42queyrum5dp" path="res://sound/walk.mp3" id="6_lrcgs"]
+[ext_resource type="PackedScene" uid="uid://875gxr6pjvee" path="res://scenes/player/hud.tscn" id="7_3of2p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcw0"]
 radius = 61.131
@@ -144,6 +145,11 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_7850m")
 character_movement_walk_speed = 5000.0
 character_movement_sprint_speed = 10000.0
+character_stamina_maximum = 100.0
+character_stamina_regen_rate = 0.25
+character_stamina_drain_rate = 0.5
+character_health_maximum = 100.0
+character_armor_maximum = 100.0
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_x0c5y")
@@ -157,6 +163,8 @@ unique_name_in_owner = true
 
 [node name="ZoomCamera" parent="." instance=ExtResource("4_f38ed")]
 unique_name_in_owner = true
+min_zoom = 1.5
+max_zoom = 3.0
 zoom_speed = 5
 
 [node name="Vision" type="Area2D" parent="."]
@@ -181,8 +189,85 @@ current = true
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lrcgs")
 
+[node name="HUD" parent="." instance=ExtResource("7_3of2p")]
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InventoryUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -349.0
+offset_top = -227.0
+offset_right = 349.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 0.188235, 0.188235, 0.74902)
+
+[node name="Label" type="Label" parent="InventoryUI/ColorRect"]
+layout_mode = 2
+offset_left = 93.0
+offset_top = 2.0
+offset_right = 246.0
+offset_bottom = 25.0
+text = "PLAYER INVENTORY"
+
+[node name="Label2" type="Label" parent="InventoryUI/ColorRect"]
+layout_mode = 2
+offset_left = 470.0
+offset_top = 2.0
+offset_right = 583.0
+offset_bottom = 25.0
+text = "NEARBY LOOT"
+
+[node name="LootBG" type="ColorRect" parent="InventoryUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -200.0
+offset_right = 343.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 0.188235, 0.188235, 0.74902)
+
+[node name="PlayerBG" type="ColorRect" parent="InventoryUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -200.0
+offset_right = -8.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 0.188235, 0.188235, 0.74902)
+
+[connection signal="character_armor_decrease" from="." to="HUD" method="_on_player_character_armor_decrease"]
+[connection signal="character_armor_increase" from="." to="HUD" method="_on_player_character_armor_increase"]
+[connection signal="character_armor_set" from="." to="HUD" method="_on_player_character_armor_set"]
+[connection signal="character_health_decrease" from="." to="HUD" method="_on_player_character_health_decrease"]
+[connection signal="character_health_increase" from="." to="HUD" method="_on_player_character_health_increase"]
+[connection signal="character_health_set" from="." to="HUD" method="_on_player_character_health_set"]
+[connection signal="character_stamina_decrease" from="." to="HUD" method="_on_player_character_stamina_decrease"]
+[connection signal="character_stamina_increase" from="." to="HUD" method="_on_player_character_stamina_increase"]
+[connection signal="character_stamina_set" from="." to="HUD" method="_on_player_character_stamina_set"]
 [connection signal="player_started_moving" from="." to="WeaponSystem" method="_on_player_player_started_moving"]
 [connection signal="player_started_sprinting" from="." to="WeaponSystem" method="_on_player_player_started_sprinting"]
 [connection signal="player_stopped_moving" from="." to="WeaponSystem" method="_on_player_player_stopped_moving"]
 [connection signal="player_stopped_sprinting" from="." to="WeaponSystem" method="_on_player_player_stopped_sprinting"]
+[connection signal="ammo_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_ammo_changed"]
+[connection signal="magazine_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_magazine_changed"]
+[connection signal="weapon_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_weapon_changed"]
 [connection signal="body_shape_exited" from="Vision" to="." method="_on_vision_body_shape_exited"]

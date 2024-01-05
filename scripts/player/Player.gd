@@ -6,7 +6,7 @@ signal player_stopped_moving
 signal player_started_sprinting
 signal player_stopped_sprinting
 
-func _process(delta):
+func process_logic(delta):
 	look_at_mouse()
 	movement_logic(delta)
 	vision_logic()
@@ -39,11 +39,11 @@ func movement_logic(delta):
 	
 	if(Input.is_action_just_pressed("sprint")):
 		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*2)
-		set("character_sprinting",true)
+		character_sprinting = true
 		
 	if(Input.is_action_just_released("sprint")):
 		%ZoomCamera._set_zoom_level(%ZoomCamera._zoom_level*0.5)
-		set("character_sprinting",false)
+		character_sprinting = false
 		
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	move_character(direction, delta)
@@ -51,7 +51,7 @@ func movement_logic(delta):
 	sprint_animation_logic()
 
 func sprint_animation_logic():
-	if(get("character_sprinting")==true):
+	if(character_sprinting==true):
 		if(velocity.length()>0):
 			player_started_sprinting.emit()
 			if(%CharacterAnimationPlayer.current_animation!="Run" or %CharacterAnimationPlayer.is_playing()==false):

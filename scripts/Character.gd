@@ -21,25 +21,39 @@ var character_damage_history = []
 
 signal character_death
 signal character_revived
-signal character_stamina_increase(amount)
-signal character_stamina_decrease(amount)
-signal character_stamina_set(amount)
-signal character_health_increase(amount)
-signal character_health_decrease(amount)
-signal character_health_set(amount)
-signal character_armor_increase(amount)
-signal character_armor_decrease(amount)
-signal character_armor_set(amount)
+signal character_stamina_increase(amount,maximum)
+signal character_stamina_decrease(amount,maximum)
+signal character_stamina_set(amount,maximum)
+signal character_health_increase(amount,maximum)
+signal character_health_decrease(amount,maximum)
+signal character_health_set(amount,maximum)
+signal character_armor_increase(amount,maximum)
+signal character_armor_decrease(amount,maximum)
+signal character_armor_set(amount,maximum)
 
 func _ready():
-	character_health_current = character_health_maximum
-	character_stamina_current = character_stamina_maximum
+	set_health(character_health_maximum)
+	set_stamina(character_stamina_maximum)
+	set_armor(character_armor_maximum)
 
+
+func _process(delta):
+	process_logic(delta)
+	
+func process_logic(_delta):
+	pass
+	
 func move_character(direction, delta):
 	if(character_dead==false):
 		if(character_sprinting==true):
-			velocity = direction * character_movement_sprint_speed * delta 
+			if(character_stamina_current>0):
+				velocity = direction * character_movement_sprint_speed * delta 
+				if(velocity.length()>0):
+					set_stamina( clamp(character_stamina_current - character_stamina_drain_rate, 0,character_stamina_maximum))
+			else:
+				velocity = direction * character_movement_walk_speed * delta 
 		else:
+			set_stamina( clamp(character_stamina_current + character_stamina_regen_rate, 0,character_stamina_maximum))
 			velocity = direction * character_movement_walk_speed * delta 
 	move_and_slide()
 		
@@ -75,6 +89,7 @@ func give_health(amount):
 			character_health_current = character_health_maximum
 		else:
 			character_health_current = futureHealth
+		character_health_increase.emit(amount,character_health_maximum)
 
 func remove_health(amount):
 	if(amount<0):
@@ -88,10 +103,12 @@ func remove_health(amount):
 			kill()
 		else:
 			character_health_current = futureHealth
+		character_health_decrease.emit(amount,character_health_maximum)
 
 func set_health(amount):
 	if(character_dead==false):
 		character_health_current = amount
+		character_health_set.emit(amount,character_health_maximum)
 	
 func give_armor(amount):
 	if(amount<0):
@@ -104,6 +121,7 @@ func give_armor(amount):
 			character_armor_current = character_armor_maximum
 		else:
 			character_armor_current = futureArmor
+		character_armor_increase.emit(amount,character_armor_maximum)
 
 func remove_armor(amount):
 	if(amount<0):
@@ -116,10 +134,12 @@ func remove_armor(amount):
 			character_armor_current = 0
 		else:
 			character_armor_current = futureArmor
+		character_armor_decrease.emit(amount,character_armor_maximum)
 
 func set_armor(amount):
 	if(character_dead==false):
 		character_armor_current = amount
+		character_armor_set.emit(amount,character_armor_maximum)
 	
 func give_stamina(amount):
 	if(amount<0):
@@ -132,6 +152,7 @@ func give_stamina(amount):
 			character_stamina_current = character_stamina_maximum
 		else:
 			character_armor_current = futureArmor
+		character_stamina_increase.emit(amount,character_stamina_maximum)
 
 func remove_stamina(amount):
 	if(amount<0):
@@ -144,7 +165,9 @@ func remove_stamina(amount):
 			character_stamina_current = 0
 		else:
 			character_stamina_current = futureStamina
+		character_stamina_decrease.emit(amount,character_stamina_maximum)
 
 func set_stamina(amount):
 	if(character_dead==false):
 		character_stamina_current = amount
+		character_stamina_set.emit(amount,character_stamina_maximum)

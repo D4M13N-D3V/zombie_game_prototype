@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://875gxr6pjvee"]
+
+[ext_resource type="Script" path="res://scripts/player/HUD.gd" id="1_2q3ud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5mc7"]
+bg_color = Color(1, 0.32549, 0.388235, 0.898039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ket3e"]
+bg_color = Color(0, 0.643589, 0.91875, 0.898039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riw2j"]
+bg_color = Color(1, 1, 1, 0.811765)
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("health_bar", "armor_bar", "stamina_bar", "current_weapon", "total_ammo", "current_magazine", "magazine_total")]
+script = ExtResource("1_2q3ud")
+health_bar = NodePath("HealthBar")
+armor_bar = NodePath("ArmorBar")
+stamina_bar = NodePath("StaminaBar")
+current_weapon = NodePath("CurrentWeapon")
+total_ammo = NodePath("TotalAmmo")
+current_magazine = NodePath("CurrentMagazine")
+magazine_total = NodePath("MaxMagazine")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 177.0
+offset_bottom = 32.0
+rotation = 1.5708
+theme_override_styles/fill = SubResource("StyleBoxFlat_b5mc7")
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 63.0
+offset_top = 5.0
+offset_right = 208.0
+offset_bottom = 32.0
+rotation = 1.5708
+theme_override_styles/fill = SubResource("StyleBoxFlat_ket3e")
+show_percentage = false
+
+[node name="CurrentWeapon" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 71.0
+offset_top = 17.0
+offset_right = 166.0
+offset_bottom = 40.0
+text = "Assault Rifle"
+
+[node name="MaxMagazine" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 72.0
+offset_top = 57.0
+offset_right = 159.0
+offset_bottom = 80.0
+scale = Vector2(0.56, 0.56)
+text = "1000"
+
+[node name="CurrentMagazine" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 70.0
+offset_top = 37.0
+offset_right = 165.0
+offset_bottom = 60.0
+text = "1000"
+
+[node name="TotalAmmo" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 108.0
+offset_top = 41.0
+offset_right = 203.0
+offset_bottom = 64.0
+scale = Vector2(0.649402, 0.637028)
+theme_override_colors/font_color = Color(0.355063, 0.514897, 0.548305, 1)
+text = "1000"
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 72.0
+offset_top = 5.0
+offset_right = 285.0
+offset_bottom = 16.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_riw2j")
+show_percentage = false

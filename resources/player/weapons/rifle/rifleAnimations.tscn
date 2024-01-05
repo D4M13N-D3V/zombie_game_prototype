@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://8n4phmr84f6g"]
+[gd_scene load_steps=15 format=3 uid="uid://8n4phmr84f6g"]
 
 [ext_resource type="AudioStream" uid="uid://buaiv3ru0nf8i" path="res://sound/rifle_shot.mp3" id="1_82gb8"]
 [ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
 [ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_26q4t"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
 [ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_xqyb5"]
+[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="6_7avsp"]
+[ext_resource type="AudioStream" uid="uid://d2hpda1oquse8" path="res://sound/reload.mp3" id="7_h5uf7"]
 
 [sub_resource type="Animation" id="Animation_x5muw"]
 resource_name = "idle"
@@ -39,6 +41,20 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rhyyt"]
 resource_name = "move"
@@ -70,6 +86,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"reload", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ReloadSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
 "method": &"play"
 }]
 }
@@ -183,3 +213,9 @@ animation = &"sprint"
 
 [node name="RifleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_82gb8")
+
+[node name="MeleeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7avsp")
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_h5uf7")
