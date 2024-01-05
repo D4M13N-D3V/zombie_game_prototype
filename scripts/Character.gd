@@ -1,45 +1,136 @@
 extends CharacterBody2D
 class_name Character
 
-@export var character_movement_speed:float = 8000.0
-
-@export var character_sprint_modifier:float = 2.0
-@export var character_sprint_maximum:float = 100.0
-@export var character_sprint_drain_rate:float = 2.0
-@export var character_sprint_regen_rate:float = 0.0
-
-var character_sprinting:bool = false
-var character_current_sprint = 0.0
-
-@export var character_health_maximum:float = 3.0
-@export var character_health_regen_rate:float = 1.0
-@export var character_armor_maximum:float = 10.0
+@export var character_movement_walk_speed:float = 0.0
+@export var character_movement_sprint_speed:float = 0.0
+@export var character_stamina_maximum:float= 0.0
+@export var character_stamina_regen_rate:float = 0.0
+@export var character_stamina_drain_rate:float = 0.0
+@export var character_health_maximum:float = 0.0
+@export var character_health_regen_rate:float = 0.0
+@export var character_armor_maximum:float = 0.0
 @export var character_armor_regen_rate:float = 0.0
 
-var character_current_health:float = 3.0
-var character_current_armor:float = 0.0
+var character_moving = false
+var character_sprinting = false
+var character_dead = false
+var character_stamina_current = 0.0
+var character_health_current = 0.0
+var character_armor_current = 0.0
+var character_damage_history = []
 
-signal died
-signal damaged(amount,current_health,maximum_health)
-signal healed(amount,current_health,maximum_health)
+signal character_death
+signal character_revived
+signal character_stamina_increase(amount)
+signal character_stamina_decrease(amount)
+signal character_stamina_set(amount)
+signal character_health_increase(amount)
+signal character_health_decrease(amount)
+signal character_health_set(amount)
+signal character_armor_increase(amount)
+signal character_armor_decrease(amount)
+signal character_armor_set(amount)
 
 func _ready():
-	heal(1)
+	character_health_current = character_health_maximum
+	character_stamina_current = character_stamina_maximum
 
-func damage(amount):
-	if(amount>=character_current_health):
-		character_current_health=0
-		die()
-	else:
-		character_current_health -= amount
-	damaged.emit(amount,character_current_health,character_health_maximum)
-	
-func heal(amount):
-	if(character_current_health+amount>character_health_maximum):
-		character_current_health=character_health_maximum
-	else:
-		character_current_health += amount
-	damaged.emit(amount,character_current_health,character_health_maximum)
+func move_character(direction, delta):
+	if(character_dead==false):
+		if(character_sprinting==true):
+			velocity = direction * character_movement_sprint_speed * delta 
+		else:
+			velocity = direction * character_movement_walk_speed * delta 
+	move_and_slide()
 		
-func die():
-	queue_free()
+func kill():
+	if(character_dead==false):
+		character_death.emit()
+	
+func revive():
+	if(character_dead==true):
+		character_revived.emit()
+	
+func give_health(amount):
+	if(amount<0):
+		print("Attempted to add health to a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to add health to a dead character.")
+	else:
+		var futureHealth = character_health_current + amount
+		if(futureHealth>character_health_maximum):
+			character_health_current = character_health_maximum
+		else:
+			character_health_current = futureHealth
+
+func remove_health(amount):
+	if(amount<0):
+		print("Attempted to remove health from a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to remove health from a dead character.")
+	else:
+		var futureHealth = character_health_current - amount
+		if(futureHealth <= 0):
+			character_health_current = 0
+		else:
+			character_health_current = futureHealth
+
+func set_health(amount):
+	if(character_dead==false):
+		character_health_current = amount
+	
+func give_armor(amount):
+	if(amount<0):
+		print("Attempted to add armor to a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to add armor to a dead character.")
+	else:
+		var futureArmor = character_armor_current + amount
+		if(futureArmor>character_armor_maximum):
+			character_armor_current = character_armor_maximum
+		else:
+			character_armor_current = futureArmor
+
+func remove_armor(amount):
+	if(amount<0):
+		print("Attempted to remove armor to a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to remove armor to a dead character.")
+	else:
+		var futureArmor = character_armor_current - amount
+		if(futureArmor<0):
+			character_armor_current = 0
+		else:
+			character_armor_current = futureArmor
+
+func set_armor(amount):
+	if(character_dead==false):
+		character_armor_current = amount
+	
+func give_stamina(amount):
+	if(amount<0):
+		print("Attempted to add stamina to a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to add stamina to a dead character.")
+	else:
+		var futureArmor = character_stamina_current + amount
+		if(futureArmor>character_stamina_maximum):
+			character_stamina_current = character_stamina_maximum
+		else:
+			character_armor_current = futureArmor
+
+func remove_stamina(amount):
+	if(amount<0):
+		print("Attempted to remove stamina to a character for a negative amount.")
+	elif(character_dead==true):
+		print("Attempted to remove stamina to a dead character.")
+	else:
+		var futureStamina = character_stamina_current - amount
+		if(futureStamina<0):
+			character_stamina_current = 0
+		else:
+			character_stamina_current = futureStamina
+
+func set_stamina(amount):
+	if(character_dead==false):
+		character_stamina_current = amount

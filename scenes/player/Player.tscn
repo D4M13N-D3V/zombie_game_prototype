@@ -149,7 +149,8 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_7850m")
-character_sprint_drain_rate = 8.0
+character_movement_walk_speed = 5000.0
+character_movement_sprint_speed = 10000.0
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_x0c5y")
@@ -362,8 +363,6 @@ current = true
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lrcgs")
 
-[connection signal="damaged" from="." to="HUD" method="_on_player_damaged"]
-[connection signal="healed" from="." to="HUD" method="_on_player_healed"]
 [connection signal="player_sprint_changed" from="." to="HUD" method="_on_player_player_sprint_changed"]
 [connection signal="player_started_moving" from="." to="WeaponSystem" method="_on_player_player_started_moving"]
 [connection signal="player_started_moving" from="." to="HUD" method="_on_player_player_started_moving"]
