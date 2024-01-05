@@ -22,8 +22,6 @@ class_name WeaponConfiguration
 @export var weapon_ranged_capacity:int = 0
 @export var weapon_ranged_maximum:int = 0
 @export var weapon_ranged_damage:float = 0.0
-@export var weapon_ranged_accuracy:float = 0.0
-@export var weapon_ranged_bullet_rate:int = 1
 @export var weapon_ranged_shake_intensity:float = 60.0
-@export var weapon_ammo_type:int = 0
 @export var weapon_ranged_cooldown:float = 0.0
+@export var weapon_ranged_automatic:bool = false

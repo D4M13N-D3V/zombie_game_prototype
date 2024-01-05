@@ -3,7 +3,7 @@ extends Node2D
 @export var IsPlayer = true
 @export var current_weapon = 0
 @export var current_weapon_configuration:Resource
-@export var weapons = ["flashlight"]
+@export var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 @export var ammo = {}
 @export var loadedAmmo = {}
 
@@ -21,6 +21,16 @@ signal magazine_changed(amount,maximum)
 func _ready():
 	current_weapon = 0
 	initialize_weapon(weapons[current_weapon])
+	%RangedTimer.connect("timeout",Callable(self,"_reset_ranged_cooldown"))
+	%MeleeTimer.connect("timeout", Callable(self,"_reset_melee_cooldown"))
+	%RangedTimer.stop()
+	%MeleeTimer.stop()
+
+func _reset_ranged_cooldown():
+	%RangedTimer.stop()
+
+func _reset_melee_cooldown():
+	%MeleeTimer.stop()
 
 func _process(_delta):
 	if(IsPlayer==true):
@@ -40,7 +50,9 @@ func melee_logic():
 		melee()
 
 func shoot_logic():
-	if(Input.is_action_just_pressed("shoot")):
+	if(Input.is_action_just_pressed("shoot") and current_weapon_configuration.weapon_ranged_automatic==false):
+		shoot()
+	elif(Input.is_action_pressed("shoot") and current_weapon_configuration.weapon_ranged_automatic==true):
 		shoot()
 		
 func reload_logic():
@@ -108,9 +120,10 @@ func reload():
 		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
 
 func shoot():
-	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0):
+	if(current_weapon_configuration.weapon_ranged_enabled==true and loadedAmmo[weapons[current_weapon]]>0 and %RangedTimer.is_stopped()==true):
 		loadedAmmo[weapons[current_weapon]] = loadedAmmo[weapons[current_weapon]]-1
 		current_weapon_animator.play("shoot")
+		%RangedTimer.start(current_weapon_configuration.weapon_ranged_cooldown)
 		get_parent().get_node("ZoomCamera").apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
 		if %Muzzle.is_colliding():
 			if(%Muzzle.get_collider().has_method("damage")==true):
@@ -125,9 +138,10 @@ func shoot():
 				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position = impact_location
 		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
-
+		
 func melee():
-	if(current_weapon_configuration.weapon_melee_enabled==true):
+	if(current_weapon_configuration.weapon_melee_enabled==true and %MeleeTimer.is_stopped()==true):
+		%MeleeTimer.start(current_weapon_configuration.weapon_melee_cooldown)
 		current_weapon_animator.play("melee")
 		get_parent().get_node("ZoomCamera").apply_shake(100.0, 4.0)
 		var targets = %MeleeZone.get_overlapping_bodies()

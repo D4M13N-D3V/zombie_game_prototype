@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://37j1d4jjisg"]
+[gd_scene load_steps=4 format=3 uid="uid://37j1d4jjisg"]
 
 [ext_resource type="Script" path="res://scripts/weapons/WeaponSystem.gd" id="1_dlyp3"]
+
+[sub_resource type="InputEventShortcut" id="InputEventShortcut_pr2ow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x78lv"]
 radius = 92.0
@@ -8,6 +10,7 @@ height = 328.0
 
 [node name="WeaponSystem" type="Node2D"]
 script = ExtResource("1_dlyp3")
+current_weapon_configuration = SubResource("InputEventShortcut_pr2ow")
 
 [node name="MeleeZone" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -23,3 +26,9 @@ debug_color = Color(1, 0, 0.101961, 0.419608)
 [node name="Muzzle" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 target_position = Vector2(2500, 0)
+
+[node name="RangedTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="MeleeTimer" type="Timer" parent="."]
+unique_name_in_owner = true

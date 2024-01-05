@@ -169,10 +169,6 @@ position = Vector2(691, 104)
 shape = SubResource("CircleShape2D_xjjbl")
 debug_color = Color(0.780392, 0.435294, 0, 0.105882)
 
-[node name="Muzzle" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-target_position = Vector2(2500, 0)
-
 [node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
