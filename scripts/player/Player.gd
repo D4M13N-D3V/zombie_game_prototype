@@ -10,45 +10,12 @@ signal player_sprint_changed(maximum,current)
 signal player_turned_flashlight_on
 signal player_turned_flashlight_off
 
-func _ready():
-	set("character_movement_speed",8000.0)
-	set("character_sprint_use_modifier",false)
-	set("character_sprint_modifier",2.0)
-	set("character_sprint_maximum",100.0)
-	set("character_sprint_drain_rate",2.0)
-	set("character_sprint_regen_rate",5.0)
-	set("character_sprinting",false)
-	set("character_current_sprint",100.0)
-
 func _process(delta):
 	look_at_mouse()
 	movement_logic(delta)
 	vision_logic()
-	melee_logic()
-	shoot_logic()
-	reload_logic()
-	weapon_switch_logic()
 	if(%CharacterAnimationPlayer.is_playing()==false):
 		%CharacterAnimationPlayer.play("Idle")
-
-# Weapon Switch
-func weapon_switch_logic():
-	if(Input.is_action_just_pressed("next_weapon")):
-		%WeaponSystem.next_weapon()
-	if(Input.is_action_just_pressed("previous_weapon")):
-		%WeaponSystem.previous_weapon()
-	
-	
-# Combat Logic
-func melee_logic():
-	if(Input.is_action_just_pressed("melee")):
-		%WeaponSystem.melee()
-func shoot_logic():
-	if(Input.is_action_just_pressed("shoot")):
-		%WeaponSystem.shoot()
-func reload_logic():
-	if(Input.is_action_just_pressed("reload")):
-		%WeaponSystem.reload()
 
 # Vision Cone Logic
 func vision_logic():
@@ -70,7 +37,6 @@ func _on_vision_body_shape_exited(_body_rid, body, _body_shape_index, _local_sha
 	if(body is TileMap == false):
 		if(body!=null):
 			body.hide()
-		
 
 # Movement Logic
 func movement_logic(delta):
@@ -86,7 +52,9 @@ func movement_logic(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	move_character(direction, delta)
 	move_and_slide()
+	sprint_animation_logic()
 
+func sprint_animation_logic():
 	if(get("character_sprinting")==true):
 		if(velocity.length()>0):
 			player_started_sprinting.emit()

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://i2up7st8k22l"]
 
-[ext_resource type="Script" path="res://scripts/characters/resources/WeaponConfiguration.gd" id="1_frav4"]
+[ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_frav4"]
 [ext_resource type="PackedScene" uid="uid://gto8obdfnjr2" path="res://resources/player/weapons/knife/knifeAnimations.tscn" id="2_v4i8o"]
 
 [resource]

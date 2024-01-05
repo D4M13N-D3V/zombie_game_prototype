@@ -50,7 +50,16 @@ func kill():
 func revive():
 	if(character_dead==true):
 		character_revived.emit()
-	
+
+func damage(amount):
+	if(character_armor_current>=amount):
+		remove_armor(amount)
+	elif(character_armor_current<amount):
+		var leftOver = amount - character_armor_current
+		remove_armor(amount)
+		character_armor_current = 0
+		remove_armor(leftOver)
+
 func give_health(amount):
 	if(amount<0):
 		print("Attempted to add health to a character for a negative amount.")

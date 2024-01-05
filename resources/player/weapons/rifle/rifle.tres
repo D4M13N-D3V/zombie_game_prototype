@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://j7o7bquukgap"]
 
-[ext_resource type="Script" path="res://scripts/characters/resources/WeaponConfiguration.gd" id="1_jlp83"]
+[ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_jlp83"]
 [ext_resource type="PackedScene" uid="uid://8n4phmr84f6g" path="res://resources/player/weapons/rifle/rifleAnimations.tscn" id="2_g7bgy"]
 
 [resource]

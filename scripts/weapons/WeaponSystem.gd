@@ -1,5 +1,5 @@
 extends Node2D
-
+@export var IsPlayer = true
 var current_weapon_configuration:Resource
 #var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
 var weapons = ["flashlight","knife","handgun", "rifle", "shotgun"]
@@ -18,6 +18,31 @@ signal magazine_changed(amount,maximum)
 func _ready():
 	current_weapon = 0
 	initialize_weapon(weapons[current_weapon])
+
+func _process(_delta):
+	if(IsPlayer==true):
+		melee_logic()
+		shoot_logic()
+		reload_logic()
+		weapon_switch_logic()
+	
+func weapon_switch_logic():
+	if(Input.is_action_just_pressed("next_weapon")):
+		next_weapon()
+	if(Input.is_action_just_pressed("previous_weapon")):
+		previous_weapon()
+
+func melee_logic():
+	if(Input.is_action_just_pressed("melee")):
+		melee()
+
+func shoot_logic():
+	if(Input.is_action_just_pressed("shoot")):
+		shoot()
+		
+func reload_logic():
+	if(Input.is_action_just_pressed("reload")):
+		reload()
 
 
 func initialize_weapon(weapon_id):

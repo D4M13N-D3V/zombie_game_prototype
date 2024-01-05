@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://b6f1x4l8ym30l"]
 
-[ext_resource type="Script" path="res://scripts/characters/resources/WeaponConfiguration.gd" id="1_kiwe8"]
+[ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_kiwe8"]
 [ext_resource type="PackedScene" uid="uid://jxsbcmo2pr2o" path="res://resources/player/weapons/shotgun/shotgunAnimations.tscn" id="2_agldc"]
 
 [resource]
