@@ -1,11 +1,14 @@
 extends Node2D
+
 @export var IsPlayer = true
-var current_weapon_configuration:Resource
-#var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
-var weapons = ["flashlight"]
-var ammo = {}
-var loadedAmmo = {}
 @export var current_weapon = 0
+@export var current_weapon_configuration:Resource
+@export var weapons = ["flashlight"]
+@export var ammo = {}
+@export var loadedAmmo = {}
+
+#var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
+
 var current_weapon_animator = null
 
 const BLOOD_IMPACT = preload("res://scenes/BloodImpact.tscn")
@@ -109,15 +112,15 @@ func shoot():
 		loadedAmmo[weapons[current_weapon]] = loadedAmmo[weapons[current_weapon]]-1
 		current_weapon_animator.play("shoot")
 		get_parent().get_node("ZoomCamera").apply_shake(current_weapon_configuration.weapon_ranged_shake_intensity, 2.0)
-		if get_parent().get_node("Muzzle").is_colliding():
-			if(get_parent().get_node("Muzzle").get_collider().has_method("damage")==true):
-				get_parent().get_node("Muzzle").get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
-				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
+		if %Muzzle.is_colliding():
+			if(%Muzzle.get_collider().has_method("damage")==true):
+				%Muzzle.get_collider().damage(current_weapon_configuration.weapon_ranged_damage)
+				var impact_location = %Muzzle.get_collision_point()
 				var impact = BLOOD_IMPACT.instantiate()
 				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position =impact_location
 			else:
-				var impact_location = get_parent().get_node("Muzzle").get_collision_point()
+				var impact_location = %Muzzle.get_collision_point()
 				var impact = WALL_IMPACT.instantiate()
 				get_parent().get_parent().get_parent().add_child(impact)
 				impact.global_position = impact_location

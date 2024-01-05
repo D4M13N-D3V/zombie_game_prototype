@@ -19,3 +19,7 @@ position = Vector2(53, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_x78lv")
 debug_color = Color(1, 0, 0.101961, 0.419608)
+
+[node name="Muzzle" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(2500, 0)
