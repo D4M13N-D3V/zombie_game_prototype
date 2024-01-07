@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://b5ciimaplsp4r"]
+
+[ext_resource type="Texture2D" uid="uid://dkuhjdrxvgnys" path="res://asset_packs/ammo_1.png" id="1_mgt8a"]
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_yabr7"]
+
+[resource]
+script = ExtResource("1_yabr7")
+item_id = "shotgun_ammo"
+item_name = "Shotgun Ammo"
+item_description = "Ammo for a pump action shotgun."
+item_height = 75
+item_width = 75
+item_slot = "NONE"
+item_icon = ExtResource("1_mgt8a")
+item_usable = true

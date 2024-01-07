@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://cp2hcmhsjv2ps"]
+
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_on35y"]
+[ext_resource type="Texture2D" uid="uid://c0b6r2ca4hmwh" path="res://asset_packs/ammo_3.png" id="1_xfg0v"]
+
+[resource]
+script = ExtResource("1_on35y")
+item_id = "rifle_ammo"
+item_name = "Rifle Ammo"
+item_description = "Ammo for a automatic rifle."
+item_height = 75
+item_width = 75
+item_slot = "NONE"
+item_icon = ExtResource("1_xfg0v")
+item_usable = true

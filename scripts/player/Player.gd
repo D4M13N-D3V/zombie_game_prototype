@@ -7,8 +7,9 @@ signal player_started_sprinting
 signal player_stopped_sprinting
 
 func process_logic(delta):
-	look_at_mouse()
-	movement_logic(delta)
+	if( GameManager.ui_open==false):
+		look_at_mouse()
+		movement_logic(delta)
 	vision_logic()
 	if(%CharacterAnimationPlayer.is_playing()==false):
 		%CharacterAnimationPlayer.play("Idle")
@@ -73,3 +74,7 @@ func sprint_animation_logic():
 func look_at_mouse():
 	look_at(get_global_mouse_position())
 
+
+
+func _on_inventory_item_used(item_id):
+	pass # Replace with function body.

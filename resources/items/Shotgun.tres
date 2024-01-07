@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://c6yqifywgb4ub"]
+
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_g1ab4"]
+[ext_resource type="Texture2D" uid="uid://b0ngiko40oe3t" path="res://asset_packs/shotgun.png" id="1_n3xgg"]
+
+[resource]
+script = ExtResource("1_g1ab4")
+item_id = "shotgun"
+item_name = "Shotgun"
+item_description = "A pump action shotgun."
+item_height = 100
+item_width = 500
+item_slot = "Primary"
+item_icon = ExtResource("1_n3xgg")
+item_usable = false

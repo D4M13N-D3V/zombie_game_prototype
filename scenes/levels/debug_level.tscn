@@ -654,106 +654,127 @@ autoplay = true
 attenuation = 1e-05
 
 [node name="Zombie" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-134, -347)
 rotation = 0.717745
 character_health_maximum = 3.0
 
 [node name="Zombie2" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-42, -407)
 rotation = 1.53054
 character_health_maximum = 3.0
 
 [node name="Zombie3" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(161, -335)
 rotation = 2.69855
 character_health_maximum = 3.0
 
 [node name="Zombie4" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-15, -335)
 rotation = 0.717745
 character_health_maximum = 3.0
 
 [node name="Zombie5" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(77, -395)
 rotation = 1.53054
 character_health_maximum = 3.0
 
 [node name="Zombie6" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(280, -323)
 rotation = 2.69855
 character_health_maximum = 3.0
 
 [node name="Zombie7" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-97, -458)
 rotation = 0.717745
 character_health_maximum = 3.0
 
 [node name="Zombie8" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-5, -518)
 rotation = 1.53054
 character_health_maximum = 3.0
 
 [node name="Zombie9" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(198, -446)
 rotation = 2.69855
 character_health_maximum = 3.0
 
 [node name="Zombie10" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(22, -446)
 rotation = 0.717745
 character_health_maximum = 3.0
 
 [node name="Zombie11" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(114, -506)
 rotation = 1.53054
 character_health_maximum = 3.0
 
 [node name="Zombie12" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(317, -434)
 rotation = 2.69855
 character_health_maximum = 3.0
 
 [node name="Zombie13" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-691, -234)
 rotation = 1.15068
 character_health_maximum = 3.0
 
 [node name="Zombie14" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-599, -294)
 rotation = 1.96347
 character_health_maximum = 3.0
 
 [node name="Zombie15" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-499, -228)
 rotation = 3.13148
 character_health_maximum = 3.0
 
 [node name="Zombie16" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-773, -357)
 rotation = 1.15068
 character_health_maximum = 3.0
 
 [node name="Zombie17" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-681, -417)
 rotation = 1.96347
 character_health_maximum = 3.0
 
 [node name="Zombie18" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-478, -345)
 rotation = 3.13148
 character_health_maximum = 3.0
 
 [node name="Zombie19" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-654, -345)
 rotation = 1.15068
 character_health_maximum = 3.0
 
 [node name="Zombie20" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-562, -405)
 rotation = 1.96347
 character_health_maximum = 3.0
 
 [node name="Zombie21" parent="." instance=ExtResource("7_dvt6b")]
+visible = false
 position = Vector2(-556, -165)
 rotation = 3.13148
 character_health_maximum = 3.0

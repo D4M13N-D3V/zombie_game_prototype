@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckc3gmavsfgkl"]
+
+[ext_resource type="Script" path="res://scripts/inventory_old/InventoryManager.gd" id="1_o5ktu"]
+[ext_resource type="Script" path="res://scripts/inventory_old/InventoryItemGrid.gd" id="2_yef7r"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o5ktu")
+
+[node name="Background" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -402.0
+offset_right = 720.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168627, 0.168627, 0.168627, 0.784314)
+
+[node name="OtherItems" type="ColorRect" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 851.0
+offset_top = 20.0
+offset_right = 1424.0
+offset_bottom = 762.0
+color = Color(0.309804, 0.309804, 0.309804, 0.780392)
+script = ExtResource("2_yef7r")
+inventory_grid_default_color = Color(0.211765, 0.231373, 0.203922, 0.705882)
+inventory_grid_used_color = Color(0.141176, 0.152941, 0.137255, 0.705882)
+
+[node name="Items" type="ColorRect" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -707.0
+offset_top = -382.0
+offset_right = 115.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 0)
+script = ExtResource("2_yef7r")
+inventory_grid_default_color = Color(0.211765, 0.231373, 0.203922, 0.705882)
+inventory_grid_used_color = Color(0.141176, 0.152941, 0.137255, 0.705882)
+
+[connection signal="weapon_equipped" from="Background/OtherItems" to="." method="_on_equipment_weapon_equipped"]
+[connection signal="weapon_unequipped" from="Background/OtherItems" to="." method="_on_equipment_weapon_unequipped"]
+[connection signal="item_used" from="Background/Items" to="." method="_on_items_item_used"]
+[connection signal="weapon_equipped" from="Background/Items" to="." method="_on_items_weapon_equipped"]
+[connection signal="weapon_unequipped" from="Background/Items" to="." method="_on_items_weapon_unequipped"]

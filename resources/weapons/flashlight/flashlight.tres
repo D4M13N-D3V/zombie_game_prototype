@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://c4acy4sptuuri"]
 
 [ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_3mnsl"]
-[ext_resource type="PackedScene" uid="uid://bn11o0qyapyf4" path="res://resources/player/weapons/flashlight/flashlightAnimations.tscn" id="2_ormms"]
+[ext_resource type="PackedScene" uid="uid://bn11o0qyapyf4" path="res://resources/weapons/flashlight/flashlightAnimations.tscn" id="2_ormms"]
 
 [resource]
 script = ExtResource("1_3mnsl")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://mh8ujn8ql8yt"]
+
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_utw1r"]
+[ext_resource type="Texture2D" uid="uid://cr4q0m7i41rw7" path="res://asset_packs/flashlight.png" id="1_v80bs"]
+
+[resource]
+script = ExtResource("1_utw1r")
+item_id = "flashlight"
+item_name = "Flashlight"
+item_description = "A flashlight for lighting things up"
+item_height = 80
+item_width = 160
+item_slot = "Melee"
+item_icon = ExtResource("1_v80bs")
+item_usable = false

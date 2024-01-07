@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0ysd2u5hcwjf"]
+[gd_scene load_steps=15 format=3 uid="uid://0ysd2u5hcwjf"]
 
 [ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_7850m"]
 [ext_resource type="SpriteFrames" uid="uid://blro1j2a07hbj" path="res://resources/player/player_sprite_frames.tres" id="1_x0c5y"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://s6dn4nwrx5c" path="res://sound/run.mp3" id="6_4v47l"]
 [ext_resource type="AudioStream" uid="uid://b42queyrum5dp" path="res://sound/walk.mp3" id="6_lrcgs"]
 [ext_resource type="PackedScene" uid="uid://875gxr6pjvee" path="res://scenes/player/hud.tscn" id="7_3of2p"]
+[ext_resource type="PackedScene" uid="uid://cym17u1jlpsyt" path="res://scenes/inventory_old/Inventory.tscn" id="8_j7upg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vcw0"]
 radius = 61.131
@@ -191,68 +192,20 @@ stream = ExtResource("6_lrcgs")
 
 [node name="HUD" parent="." instance=ExtResource("7_3of2p")]
 
-[node name="InventoryUI" type="CanvasLayer" parent="."]
-visible = false
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="InventoryUI"]
+[node name="Inventory" parent="UI" instance=ExtResource("8_j7upg")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -349.0
-offset_top = -227.0
-offset_right = 349.0
-offset_bottom = 227.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.188235, 0.188235, 0.188235, 0.74902)
-
-[node name="Label" type="Label" parent="InventoryUI/ColorRect"]
-layout_mode = 2
-offset_left = 93.0
-offset_top = 2.0
-offset_right = 246.0
-offset_bottom = 25.0
-text = "PLAYER INVENTORY"
-
-[node name="Label2" type="Label" parent="InventoryUI/ColorRect"]
-layout_mode = 2
-offset_left = 470.0
-offset_top = 2.0
-offset_right = 583.0
-offset_bottom = 25.0
-text = "NEARBY LOOT"
-
-[node name="LootBG" type="ColorRect" parent="InventoryUI/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -200.0
-offset_right = 343.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.188235, 0.188235, 0.188235, 0.74902)
-
-[node name="PlayerBG" type="ColorRect" parent="InventoryUI/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -200.0
-offset_right = -8.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.188235, 0.188235, 0.188235, 0.74902)
 
 [connection signal="character_armor_decrease" from="." to="HUD" method="_on_player_character_armor_decrease"]
 [connection signal="character_armor_increase" from="." to="HUD" method="_on_player_character_armor_increase"]
@@ -271,3 +224,7 @@ color = Color(0.188235, 0.188235, 0.188235, 0.74902)
 [connection signal="magazine_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_magazine_changed"]
 [connection signal="weapon_changed" from="WeaponSystem" to="HUD" method="_on_weapon_system_weapon_changed"]
 [connection signal="body_shape_exited" from="Vision" to="." method="_on_vision_body_shape_exited"]
+[connection signal="item_used" from="UI/Inventory" to="." method="_on_inventory_item_used"]
+[connection signal="item_used" from="UI/Inventory" to="WeaponSystem" method="_on_inventory_item_used"]
+[connection signal="weapon_equipped" from="UI/Inventory" to="WeaponSystem" method="_on_inventory_weapon_equipped"]
+[connection signal="weapon_unequipped" from="UI/Inventory" to="WeaponSystem" method="_on_inventory_weapon_unequipped"]

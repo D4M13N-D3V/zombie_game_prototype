@@ -23,64 +23,68 @@ magazine_total = NodePath("MaxMagazine")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = 32.0
+offset_left = 63.0
 offset_top = 5.0
-offset_right = 177.0
-offset_bottom = 32.0
+offset_right = 404.0
+offset_bottom = 63.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_b5mc7")
 show_percentage = false
 
 [node name="ArmorBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = 63.0
+offset_left = 123.0
 offset_top = 5.0
-offset_right = 208.0
-offset_bottom = 32.0
+offset_right = 464.0
+offset_bottom = 63.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_ket3e")
 show_percentage = false
 
 [node name="CurrentWeapon" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 71.0
-offset_top = 17.0
-offset_right = 166.0
-offset_bottom = 40.0
+offset_left = 131.0
+offset_top = 37.0
+offset_right = 603.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 80
 text = "Assault Rifle"
 
 [node name="MaxMagazine" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 72.0
-offset_top = 57.0
-offset_right = 159.0
-offset_bottom = 80.0
+offset_left = 145.0
+offset_top = 216.0
+offset_right = 293.0
+offset_bottom = 306.0
 scale = Vector2(0.56, 0.56)
+theme_override_font_sizes/font_size = 65
 text = "1000"
 
 [node name="CurrentMagazine" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 70.0
-offset_top = 37.0
-offset_right = 165.0
-offset_bottom = 60.0
+offset_left = 132.0
+offset_top = 127.0
+offset_right = 304.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 75
 text = "1000"
 
 [node name="TotalAmmo" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 108.0
-offset_top = 41.0
-offset_right = 203.0
-offset_bottom = 64.0
-scale = Vector2(0.649402, 0.637028)
-theme_override_colors/font_color = Color(0.355063, 0.514897, 0.548305, 1)
+offset_left = 306.0
+offset_top = 134.0
+offset_right = 422.0
+offset_bottom = 203.0
+scale = Vector2(1.019, 1)
+theme_override_colors/font_color = Color(0.541176, 0.85098, 0.658824, 1)
+theme_override_font_sizes/font_size = 50
 text = "1000"
 
 [node name="StaminaBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = 72.0
+offset_left = 127.0
 offset_top = 5.0
-offset_right = 285.0
-offset_bottom = 16.0
+offset_right = 813.0
+offset_bottom = 32.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_riw2j")
 show_percentage = false

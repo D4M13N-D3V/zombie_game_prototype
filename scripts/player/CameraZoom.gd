@@ -28,6 +28,6 @@ func _input(event):
 	if event.is_action_pressed("zoom_out"):
 		_set_zoom_level(_zoom_level - zoom_factor)
 
-func apply_shake(strength, fade):
+func apply_shake(strength, fade):	
 	shake_fade = fade
 	shake_strength = Vector2(rng.randf_range(-strength, strength),rng.randf_range(-strength, strength))

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmu2ayhyre6je"]
+
+[ext_resource type="Script" path="res://scripts/inventory_old/InventoryItemGridItem.gd" id="1_jx5q7"]
+
+[node name="BaseItem" type="TextureRect"]
+z_as_relative = false
+expand_mode = 2
+script = ExtResource("1_jx5q7")

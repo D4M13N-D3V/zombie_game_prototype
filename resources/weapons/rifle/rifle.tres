@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="WeaponConfiguration" load_steps=3 format=3 uid="uid://j7o7bquukgap"]
 
-[ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_jlp83"]
-[ext_resource type="PackedScene" uid="uid://8n4phmr84f6g" path="res://resources/player/weapons/rifle/rifleAnimations.tscn" id="2_g7bgy"]
+[ext_resource type="Script" path="res://scripts/weapons/WeaponConfiguration.gd" id="1_4a0cd"]
+[ext_resource type="PackedScene" uid="uid://8n4phmr84f6g" path="res://resources/weapons/rifle/rifleAnimations.tscn" id="2_k20ba"]
 
 [resource]
-script = ExtResource("1_jlp83")
+script = ExtResource("1_4a0cd")
 weapon_id = "rifle"
 weapon_name = "Rifle"
 weapon_description = "A semi automatic rifle chambered in NATO 5.56 with magazines that have a capacity of 30 rounds."
 weapon_sway_speed = 1.0
-weapon_animated_sprite = ExtResource("2_g7bgy")
+weapon_animated_sprite = ExtResource("2_k20ba")
 weapon_melee_enabled = true
 weapon_melee_damage = 2.0
 weapon_melee_cooldown = 0.6

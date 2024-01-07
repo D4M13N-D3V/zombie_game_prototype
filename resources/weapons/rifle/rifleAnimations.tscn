@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmukq8ulicvip"]
+[gd_scene load_steps=15 format=3 uid="uid://8n4phmr84f6g"]
 
-[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="1_1n8ds"]
-[ext_resource type="AudioStream" uid="uid://cqdapo4tvluxf" path="res://sound/pistol_shot.mp3" id="1_8nrrh"]
-[ext_resource type="SpriteFrames" uid="uid://cigof78synoy0" path="res://resources/player/weapons/handgun/weapon_handgun_sprite_frames.tres" id="1_31h1k"]
-[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="2_bohof"]
-[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u3oth"]
-[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="6_dvyjt"]
-[ext_resource type="AudioStream" uid="uid://d2hpda1oquse8" path="res://sound/reload.mp3" id="6_gmvr2"]
+[ext_resource type="AudioStream" uid="uid://buaiv3ru0nf8i" path="res://sound/rifle_shot.mp3" id="1_82gb8"]
+[ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
+[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_26q4t"]
+[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
+[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_xqyb5"]
+[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="6_7avsp"]
+[ext_resource type="AudioStream" uid="uid://d2hpda1oquse8" path="res://sound/reload.mp3" id="7_h5uf7"]
 
-[sub_resource type="Animation" id="Animation_nnkkx"]
+[sub_resource type="Animation" id="Animation_x5muw"]
 resource_name = "idle"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -25,7 +25,7 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_styjr"]
+[sub_resource type="Animation" id="Animation_wau8y"]
 resource_name = "melee"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -56,7 +56,7 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_8acg5"]
+[sub_resource type="Animation" id="Animation_rhyyt"]
 resource_name = "move"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -73,7 +73,7 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2wxet"]
+[sub_resource type="Animation" id="Animation_void2"]
 resource_name = "reload"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -104,16 +104,28 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2sln0"]
+[sub_resource type="Animation" id="Animation_urjwv"]
 resource_name = "shoot"
 length = 0.1
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponAnimatedSprite")
+tracks/0/path = NodePath("MuzzleFlash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponAnimatedSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -121,22 +133,10 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MuzzleFlash:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0001, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ShootSound")
+tracks/2/path = NodePath("RifleSound")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -148,7 +148,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_drijt"]
+[sub_resource type="Animation" id="Animation_qrbuw"]
 resource_name = "sprint"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -165,61 +165,58 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8tsg1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8a1iv"]
 _data = {
-"idle": SubResource("Animation_nnkkx"),
-"melee": SubResource("Animation_styjr"),
-"move": SubResource("Animation_8acg5"),
-"reload": SubResource("Animation_2wxet"),
-"shoot": SubResource("Animation_2sln0"),
-"sprint": SubResource("Animation_drijt")
+"idle": SubResource("Animation_x5muw"),
+"melee": SubResource("Animation_wau8y"),
+"move": SubResource("Animation_rhyyt"),
+"reload": SubResource("Animation_void2"),
+"shoot": SubResource("Animation_urjwv"),
+"sprint": SubResource("Animation_qrbuw")
 }
 
-[node name="HandgunAnimation" type="Node2D"]
+[node name="RifleAnimation" type="Node2D"]
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8tsg1")
+"": SubResource("AnimationLibrary_8a1iv")
 }
-autoplay = "idle"
-
-[node name="MuzzleFlash" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(118, 53)
-scale = Vector2(0.105469, 0.105469)
-texture = ExtResource("1_1n8ds")
-
-[node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
-position = Vector2(-47.4074, -9.48148)
-scale = Vector2(2.5, 2.5)
-color = Color(0.870588, 0.419608, 0.203922, 1)
-shadow_enabled = true
-texture = ExtResource("2_bohof")
-texture_scale = 50.0
-
-[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_31h1k")
-animation = &"reload"
-frame = 14
-frame_progress = 1.0
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true
-position = Vector2(-58, 31)
-rotation = 4.71239
+position = Vector2(-48, 39)
+rotation = -1.5708
 color = Color(0.6, 0.513726, 0.239216, 1)
 shadow_enabled = true
 shadow_filter = 2
-texture = ExtResource("2_u3oth")
+texture = ExtResource("2_u8pou")
 offset = Vector2(0, 1650)
 texture_scale = 10.0
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_8nrrh")
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(138, 48)
+scale = Vector2(0.150391, 0.150391)
+texture = ExtResource("2_26q4t")
+
+[node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
+position = Vector2(-47.4074, -9.48148)
+scale = Vector2(5, 5)
+color = Color(0.870588, 0.419608, 0.203922, 1)
+shadow_enabled = true
+texture = ExtResource("3_xqyb5")
+texture_scale = 50.0
+
+[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_nhxjg")
+animation = &"sprint"
+
+[node name="RifleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_82gb8")
 max_polyphony = 100
 
 [node name="MeleeSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_dvyjt")
+stream = ExtResource("6_7avsp")
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_gmvr2")
+stream = ExtResource("7_h5uf7")

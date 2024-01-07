@@ -1,0 +1,4 @@
+extends TextureRect
+class_name InventoryItemGridItem
+
+var item_config:ItemConfiguration

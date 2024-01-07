@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://csevnry6ws2v6"]
+
+[ext_resource type="Script" path="res://scripts/inventory/InventoryGridManager.gd" id="1_vxdcx"]
+
+[node name="Inventory" type="Control" node_paths=PackedStringArray("inventory_main_grid_control")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxdcx")
+inventory_main_grid_control = NodePath("ScrollContainer/MainGrid")
+inventory_main_grid_auto_size = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 638.0
+offset_bottom = 597.0
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 630.0
+offset_bottom = 589.0
+vertical_scroll_mode = 0
+
+[node name="MainGrid" type="ColorRect" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.196078, 0.196078, 0.196078, 1)

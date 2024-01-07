@@ -3,7 +3,7 @@ extends Node2D
 @export var IsPlayer = true
 @export var current_weapon = 0
 @export var current_weapon_configuration:Resource
-@export var weapons = ["flashlight","knife","handgun","shotgun","rifle"]
+@export var weapons = ["knife"]
 @export var ammo = {}
 @export var loadedAmmo = {}
 
@@ -33,7 +33,7 @@ func _reset_melee_cooldown():
 	%MeleeTimer.stop()
 
 func _process(_delta):
-	if(IsPlayer==true):
+	if(IsPlayer==true and GameManager.ui_open==false):
 		melee_logic()
 		shoot_logic()
 		reload_logic()
@@ -66,11 +66,11 @@ func remove_weapon(weapon_id):
 	weapons.erase(weapon_id)
 
 func initialize_weapon(weapon_id):
-	current_weapon_configuration = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+".tres")
+	current_weapon_configuration = load("res://resources/weapons/"+weapon_id+"/"+weapon_id+".tres")
 	if current_weapon_animator != null:
 		current_weapon_animator.get_parent().queue_free()
 	# Load and instantiate weapon animator scene
-	var weapon_animator_scene = load("res://resources/player/weapons/"+weapon_id+"/"+weapon_id+"Animations.tscn")
+	var weapon_animator_scene = load("res://resources/weapons/"+weapon_id+"/"+weapon_id+"Animations.tscn")
 	
 	# Check if the scene is successfully loaded
 	if weapon_animator_scene != null:
@@ -82,9 +82,9 @@ func initialize_weapon(weapon_id):
 		print("Failed to load weapon animator scene for weapon ID: ", weapon_id)
 	
 	if(ammo.has(weapon_id)==false):
-		ammo[weapon_id] = 100
+		ammo[weapon_id] = 0
 		loadedAmmo[weapon_id] = 0
-		ammo_changed.emit(100, current_weapon_configuration.weapon_ranged_maximum)
+		ammo_changed.emit(0, current_weapon_configuration.weapon_ranged_maximum)
 		magazine_changed.emit(0, current_weapon_configuration.weapon_ranged_capacity)
 	weapon_changed.emit(weapon_id)
 
@@ -203,3 +203,38 @@ func _on_player_player_stopped_moving():
 func _on_player_player_started_moving():
 	if(current_weapon_animator!=null and is_playing_melee_anim()==false and is_playing_shoot_anim()==false or current_weapon_animator!=null and current_weapon_animator.is_playing()==false):
 		current_weapon_animator.play("move")
+
+
+func _on_inventory_weapon_equipped(weapon_id, item):
+	if(weapons[current_weapon]==weapon_id):
+		next_weapon()
+	add_weapon(weapon_id)
+	
+func _on_inventory_weapon_unequipped(weapon_id, item):
+	if(weapons[current_weapon]==weapon_id):
+		next_weapon()
+	remove_weapon(weapon_id)
+
+
+func _on_inventory_item_used(item_id):
+	if(item_id=="handgun_ammo"):
+		if(ammo.has("handgun")==false):
+			ammo["handgun"] = 0
+			loadedAmmo["handgun"] = 0
+		ammo["handgun"] = ammo["handgun"]+7
+		ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
+	elif(item_id=="shotgun_ammo"):
+		if(ammo.has("shotgun")==false):
+			ammo["shotgun"] = 0
+			loadedAmmo["shotgun"] = 0
+		ammo["shotgun"] = ammo["shotgun"]+7
+		ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)
+	elif(item_id=="rifle_ammo"):
+		if(ammo.has("rifle")==false):
+			ammo["rifle"] = 0
+			loadedAmmo["rifle"] = 0
+		ammo["rifle"] = ammo["rifle"]+7
+		ammo_changed.emit(ammo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_maximum)
+		magazine_changed.emit(loadedAmmo[weapons[current_weapon]], current_weapon_configuration.weapon_ranged_capacity)

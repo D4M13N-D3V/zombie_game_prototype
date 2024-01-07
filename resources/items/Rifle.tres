@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://btcnchgphihy2"]
+
+[ext_resource type="Texture2D" uid="uid://bvm4tbneidohw" path="res://asset_packs/rifle.png" id="1_4md2n"]
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_n4ffi"]
+
+[resource]
+script = ExtResource("1_n4ffi")
+item_id = "rifle"
+item_name = "Rifle"
+item_description = "A automatic rifle."
+item_height = 150
+item_width = 450
+item_slot = "Primary"
+item_icon = ExtResource("1_4md2n")
+item_usable = false

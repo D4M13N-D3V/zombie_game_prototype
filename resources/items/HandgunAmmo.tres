@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://d2py5p6myx2fs"]
+
+[ext_resource type="Texture2D" uid="uid://c66qxs2whjaw" path="res://asset_packs/ammo_2.png" id="1_70vep"]
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_b8ymk"]
+
+[resource]
+script = ExtResource("1_b8ymk")
+item_id = "handgun_ammo"
+item_name = "Handgun Ammo"
+item_description = "Ammo for a handgun"
+item_height = 75
+item_width = 75
+item_slot = "NONE"
+item_icon = ExtResource("1_70vep")
+item_usable = true

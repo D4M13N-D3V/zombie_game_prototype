@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://8n4phmr84f6g"]
+[gd_scene load_steps=15 format=3 uid="uid://jxsbcmo2pr2o"]
 
-[ext_resource type="AudioStream" uid="uid://buaiv3ru0nf8i" path="res://sound/rifle_shot.mp3" id="1_82gb8"]
-[ext_resource type="SpriteFrames" uid="uid://c2p0j3fi7bt2u" path="res://resources/player/weapons/rifle/weapon_rifle_sprite_frames.tres" id="1_nhxjg"]
-[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_26q4t"]
-[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_u8pou"]
-[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_xqyb5"]
-[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="6_7avsp"]
-[ext_resource type="AudioStream" uid="uid://d2hpda1oquse8" path="res://sound/reload.mp3" id="7_h5uf7"]
+[ext_resource type="AudioStream" uid="uid://bv8c1rfwhb10l" path="res://sound/shotgun_shot.mp3" id="1_5wtmx"]
+[ext_resource type="SpriteFrames" uid="uid://dmxgi6kkpr2ah" path="res://resources/weapons/shotgun/weapon_shotgun_sprite_frames.tres" id="1_fs0yd"]
+[ext_resource type="Texture2D" uid="uid://cyu66tbyv3d6o" path="res://asset_packs/muzzle_flashs/m_10.png" id="2_gfll8"]
+[ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_rqr11"]
+[ext_resource type="Texture2D" uid="uid://csknk0x208yci" path="res://asset_packs/lamp.png" id="3_0q1g7"]
+[ext_resource type="AudioStream" uid="uid://db4qpivgtffr1" path="res://sound/punch.mp3" id="6_e13bu"]
+[ext_resource type="AudioStream" uid="uid://d2hpda1oquse8" path="res://sound/reload.mp3" id="7_j8spb"]
 
 [sub_resource type="Animation" id="Animation_x5muw"]
 resource_name = "idle"
@@ -136,7 +136,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RifleSound")
+tracks/2/path = NodePath("ShotgunSound")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -175,7 +175,7 @@ _data = {
 "sprint": SubResource("Animation_qrbuw")
 }
 
-[node name="RifleAnimation" type="Node2D"]
+[node name="ShotgunAnimation" type="Node2D"]
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -184,39 +184,39 @@ libraries = {
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 show_behind_parent = true
-position = Vector2(-48, 39)
-rotation = -1.5708
+position = Vector2(-76, 41)
+rotation = 4.71239
 color = Color(0.6, 0.513726, 0.239216, 1)
 shadow_enabled = true
 shadow_filter = 2
-texture = ExtResource("2_u8pou")
+texture = ExtResource("2_rqr11")
 offset = Vector2(0, 1650)
 texture_scale = 10.0
 
 [node name="MuzzleFlash" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(138, 48)
-scale = Vector2(0.150391, 0.150391)
-texture = ExtResource("2_26q4t")
+position = Vector2(147, 51)
+scale = Vector2(0.180664, 0.180664)
+texture = ExtResource("2_gfll8")
 
 [node name="MuzzleFlashLight" type="PointLight2D" parent="MuzzleFlash"]
+visible = false
 position = Vector2(-47.4074, -9.48148)
 scale = Vector2(5, 5)
 color = Color(0.870588, 0.419608, 0.203922, 1)
 shadow_enabled = true
-texture = ExtResource("3_xqyb5")
+texture = ExtResource("3_0q1g7")
 texture_scale = 50.0
 
 [node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_nhxjg")
+sprite_frames = ExtResource("1_fs0yd")
 animation = &"sprint"
 
-[node name="RifleSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_82gb8")
-max_polyphony = 100
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_5wtmx")
 
 [node name="MeleeSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_7avsp")
+stream = ExtResource("6_e13bu")
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_h5uf7")
+stream = ExtResource("7_j8spb")

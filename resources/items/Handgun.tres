@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=3 format=3 uid="uid://dcekyaffrc0i"]
+
+[ext_resource type="Texture2D" uid="uid://dnxxqetrpert5" path="res://asset_packs/pistol.png" id="1_4gmtu"]
+[ext_resource type="Script" path="res://scripts/inventory/ItemConfiguration.gd" id="1_hdxup"]
+
+[resource]
+script = ExtResource("1_hdxup")
+item_id = "handgun"
+item_name = "Handgun"
+item_description = "A semiautomatic hangun."
+item_height = 100
+item_width = 130
+item_slot = "Secondary"
+item_icon = ExtResource("1_4gmtu")
+item_usable = false

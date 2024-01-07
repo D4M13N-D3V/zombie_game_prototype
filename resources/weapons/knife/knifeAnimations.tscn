@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://gto8obdfnjr2"]
 
-[ext_resource type="SpriteFrames" uid="uid://m3tpfsqqomgj" path="res://resources/player/weapons/knife/weapon_knife_sprite_frames.tres" id="1_8emao"]
+[ext_resource type="SpriteFrames" uid="uid://m3tpfsqqomgj" path="res://resources/weapons/knife/weapon_knife_sprite_frames.tres" id="1_8emao"]
 [ext_resource type="Texture2D" uid="uid://p0quate7dhau" path="res://asset_packs/flashlight_texture.jpg" id="2_v6fff"]
 
 [sub_resource type="Animation" id="Animation_2nsgo"]
